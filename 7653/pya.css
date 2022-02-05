@@ -1,0 +1,231 @@
+A:link
+{
+	COLOR:#006000;
+	TEXT-DECORATION: none;
+}
+A:visited,A:active
+{
+	COLOR: #909090;
+	TEXT-DECORATION: none;
+}
+A:hover
+{
+	TEXT-DECORATION: underline;
+}
+BODY
+{
+	SCROLLBAR-FACE-COLOR: #9cce9c;
+	SCROLLBAR-HIGHLIGHT-COLOR: #9cce9c;
+	SCROLLBAR-SHADOW-COLOR: #cceecc;
+	SCROLLBAR-ARROW-COLOR: #008000;
+	SCROLLBAR-DARKSHADOW-COLOR: #9cce9c;
+	SCROLLBAR-BASE-COLOR: #cceecc;
+	FONT-FAMILY: 'MS UI Gothic',Osaka,sans-serif;
+}
+SPAN.moji1
+{
+	FONT-SIZE: 9pt;
+	COLOR: #003000;
+}
+SPAN.moji2
+{
+	FONT-SIZE: 11pt;
+	COLOR: #008000;
+}
+SPAN.moji3
+{
+	FONT-SIZE: 8pt;
+	FONT-FAMILY: 'Courier New';
+}
+SPAN.moji4
+{
+	FONT-SIZE: 9pt;
+	COLOR: #cceecc;
+	LINE-HEIGHT: 120%;
+}
+.moji5
+{
+	FONT-SIZE: 9pt;
+	LINE-HEIGHT: 150%;
+}
+SPAN.moji6
+{
+	FONT-SIZE: 12px;
+	COLOR: #006000;
+}
+SPAN.moji7
+{
+	FONT-WEIGHT: bold;
+	FONT-SIZE: 9pt;
+	COLOR: #006000;
+	FONT-FAMILY: 'Arial';
+}
+SPAN.moji8
+{
+	FONT-SIZE: 12px;
+	COLOR: #003000;
+}
+SPAN.link1
+{
+	FONT-SIZE: 9pt;
+	LINE-HEIGHT: 120%;
+}
+SPAN.bbs1
+{
+	FONT-SIZE: 9pt;
+	COLOR: #006000;
+	LINE-HEIGHT: 120%;
+}
+SPAN.bbs2
+{
+	FONT-SIZE: 9pt;
+	COLOR: #003000;
+	LINE-HEIGHT: 120%;
+}
+SPAN.bbs3
+{
+	FONT-SIZE: 10px;
+	COLOR: #909090;
+	LINE-HEIGHT: 120%;
+}
+SPAN.bbs4
+{
+	FONT-SIZE: 9pt;
+	COLOR: #006000;
+	LINE-HEIGHT: 150%;
+}
+SPAN.bbs5
+{
+	FONT-SIZE: 9pt;
+	COLOR: #800000;
+	LINE-HEIGHT: 120%;
+}
+SPAN.midashi
+{
+	FONT-SIZE: 10pt;
+	COLOR: #cceecc;
+}
+SPAN.tk
+{
+	FONT-SIZE: 11pt;
+	COLOR: #006000;
+	LINE-HEIGHT: 150%;
+}
+SPAN.bana
+{
+	FONT-SIZE: 11px;
+	COLOR: #808080;
+	FONT-FAMILY: 'Courier New';
+}
+SPAN.rs
+{
+	FONT-WEIGHT: bold;
+	FONT-SIZE: 9pt;
+	COLOR: #ff7c00;
+	FONT-FAMILY: 'Arial';
+}
+UL
+{
+	FONT-SIZE: 9pt;
+	LINE-HEIGHT: 130%;
+}
+UL.ab
+{
+	FONT-SIZE: 11pt;
+	COLOR: #006000;
+	LINE-HEIGHT: 150%;
+}
+TABLE.waku1
+{BORDER: #008000 1px solid;}
+TABLE.waku2
+{BORDER: #84ad84 2px solid;}
+TABLE.waku3
+{BORDER: #52ad52 3px solid;}
+TABLE.waku4{
+BORDER: #a5cea5 1px solid;
+BACKGROUND-COLOR: #cceecc
+}
+TABLE.waku5
+{BORDER: #008000 3px solid;}
+TD.tdwa1
+{
+BORDER: 1px solid #008000;
+BACKGROUND-COLOR: #d6f2d6;
+}
+TEXTAREA,INPUT.bbs,INPUT.bbs2,SELECT.dti{
+	BORDER:1px solid #006000;
+	COLOR: #006000;
+}
+TEXTAREA
+{
+	FONT-SIZE: 11px;
+	FONT-FAMILY: "MS UI Gothic";
+	BACKGROUND-COLOR: #bbd7bb;
+}
+INPUT.bbs
+{
+	FONT-SIZE: 12px;
+	FONT-FAMILY: "MS UI Gothic";
+	BACKGROUND-COLOR: #cceecc;
+}
+INPUT.bbs2
+{
+	FONT-SIZE: 9pt;
+	IME-MODE: active;
+	FONT-FAMILY: "MS UI Gothic";
+	BACKGROUND-COLOR: #cceecc
+}
+SELECT.dti
+{
+	FONT-SIZE: 9pt;
+	BACKGROUND-COLOR: #cceecc
+}
+IFRAME.img
+{BORDER:1px solid #008000;}
+HR.hr1 {
+	border-style:dotted;
+	color:#A5CEA5;
+	height:1px;
+}
+DIV
+{
+    BORDER:1px solid #008000;
+    PADDING: 2px;
+    FONT-SIZE: 9pt;
+    COLOR: #ffffff;
+    BACKGROUND-COLOR: #008000
+}
+DIV.idx
+{
+	BORDER: #84ad84 2px solid;
+	WIDTH: 90px;
+	COLOR: #006000;
+	FONT-FAMILY: 'Arial';
+	FONT-WEIGHT: bold;
+	FONT-SIZE: 9pt;
+	BACKGROUND-COLOR: #a5cea5;
+	TEXT-ALIGN: center
+}
+/*
+     FILE ARCHIVED ON 05:20:37 Jul 16, 2005 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 02:31:43 Feb 05, 2022.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+*/
+/*
+playback timings (ms):
+  captures_list: 1752.478
+  exclusion.robots: 1688.777
+  exclusion.robots.policy: 1688.769
+  xauthn.identify: 659.632
+  xauthn.chkprivs: 1028.886
+  RedisCDXSource: 7.362
+  esindex: 0.008
+  LoadShardBlock: 39.919 (3)
+  PetaboxLoader3.datanode: 56.569 (4)
+  CDXLines.iter: 14.397 (3)
+  load_resource: 503.126
+  PetaboxLoader3.resolve: 447.577
+*/
