@@ -1,0 +1,1831 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/loose.dtd">
+
+
+
+
+<html>
+
+<!-- machid: 91 -->
+<head>
+	<title>YouTube - Me at the zoo</title>
+
+	<link rel="stylesheet" href="https://web.archive.org/web/20061208083125cs_/https://www.youtube.com/css/styles_yts1164775696.css" type="text/css">
+	<link rel="stylesheet" href="https://web.archive.org/web/20061208083125cs_/https://www.youtube.com/css/base_yts1165484471.css" type="text/css">
+<link rel="stylesheet" href="https://web.archive.org/web/20061208083125cs_/https://www.youtube.com/css/watch_yts1165475067.css" type="text/css">
+	<link rel="icon" href="https://web.archive.org/web/20061208083125im_/https://www.youtube.com/favicon.ico" type="image/x-icon">
+	<link rel="shortcut icon" href="https://web.archive.org/web/20061208083125im_/https://www.youtube.com/favicon.ico" type="image/x-icon">
+	
+	<meta name="title" content="Meatthezoo">
+	<meta name="keywords" content="zoo, jawed, elephant, youtube">
+
+	<link rel="alternate" title="YouTube - [RSS]" href="https://web.archive.org/web/20061208083125/https://www.youtube.com/rssls">
+
+	<script type="text/javascript" src="https://web.archive.org/web/20061208083125js_/https://www.youtube.com/js/ui_yts1164777409.js"></script>
+	<script type="text/javascript" src="https://web.archive.org/web/20061208083125js_/https://www.youtube.com/js/AJAX_yts1161839869.js"></script>
+	<script type="text/javascript" src="https://web.archive.org/web/20061208083125js_/https://www.youtube.com/js/watch_queue_yts1161839869.js"></script>
+	<script language="javascript" type="text/javascript">
+		onLoadFunctionList = new Array();
+		function performOnLoadFunctions()
+		{
+			for (var i in onLoadFunctionList)
+			{
+				onLoadFunctionList[i]();
+			}
+		}
+	</script>
+	
+	<script language="javascript" type="text/javascript"> function _hbLink (a,b) { return false; } </script>
+
+	
+	
+	
+	<script type="text/javascript" src="https://web.archive.org/web/20061208083125js_/https://www.youtube.com/swfobject.js"></script>
+	<script type="text/javascript" src="https://web.archive.org/web/20061208083125js_/https://www.youtube.com/js/components_yts1157352107.js"></script>
+	<script type="text/javascript" src="https://web.archive.org/web/20061208083125js_/https://www.youtube.com/js/AJAX_yts1161839869.js"></script>
+	<script type="text/javascript" src="https://web.archive.org/web/20061208083125js_/https://www.youtube.com/js/ui_yts1164777409.js"></script>
+	<script type="text/javascript" src="https://web.archive.org/web/20061208083125js_/https://www.youtube.com/js/comments_yts1163746047.js"></script>
+	<script type="text/javascript" src="https://web.archive.org/web/20061208083125js_/https://www.youtube.com/js/video_bar_yts1157352107.js"></script>
+
+	<script language="javascript" type="text/javascript">
+	function toggleFullStats() {
+		if (document.getElementById('honorLinkDiv'))
+		{
+			if (document.getElementById('honorLinkDiv').style.display=='') document.getElementById('honorLinkDiv').style.display= 'block';
+			toggleDisplay('honorLinkDiv');
+		}
+		var fsd = document.getElementById('fullStats').style.display;
+		if (fsd == 'none' || fsd == '') {
+			showAjaxDivNotLoggedIn('honorsDiv', '/watch_ajax?v=jNQXAC9IVRw&action_get_honors=1&l=EN', false);
+			document.getElementById('moreless').innerHTML = 'less';
+		}
+		else
+		{
+			document.getElementById('moreless').innerHTML = 'more';
+		}
+		toggleDisplay('fullStats');
+	}
+	function CheckLogin() {
+			return false;
+	}
+	
+	
+	function showRelatedVideosContent() {
+		getAndShowNavContent('exRelated', '/watch_ajax?video_id=jNQXAC9IVRw&action_get_related_videos_component&search=zoo%20jawed%20elephant%20youtube');
+	}
+	
+	function showRelatedPlaylistContent() {
+		getAndShowNavContent('exPlaylist', '/watch_ajax?feature=PlayList&search=zoo%20jawed%20elephant%20youtube&video_id=jNQXAC9IVRw&action_get_related_playlist_component&p=&index=0');
+	}
+	function showRelatedUserContent() {
+		getAndShowNavContent('exUser', '/watch_ajax?video_id=jNQXAC9IVRw&action_get_user_videos_component&user_id=jNQXAC9IVRw&video_count=53');
+	}
+	function showHonorsContent() {
+		getAndShowNavContent('honors', '/watch_ajax?v=jNQXAC9IVRw&action_get_honors=1&l=EN');
+	}
+	
+	function showAllQueuedVideos() {
+		setInnerHTML('show_all_queued_videos_div', 'Loading..');
+		getAndShowNavContent('watchlist_container', '/watch_queue_ajax?action_get_all_queue_videos_component&v=jNQXAC9IVRw', postShowAllQueuedVideos);
+	}
+	function postShowAllQueuedVideos() {
+		setInnerHTML('show_all_queued_videos_div', 'Showing All Videos');
+		jumpToNowPlaying();
+	}
+		
+	// This can be split out...
+	var contentTab=new Array();	
+	function getAndShowNavContent(nameprefix, url, postShowNavContent) {
+		selectNavLink(nameprefix + "Link");
+	
+		if(contentTab[nameprefix]) {
+			return;
+		}
+		
+		self.nameprefix = nameprefix;
+		self.showRelatedVideosResponse = showRelatedVideosResponse;
+		self.postShowNavContent = postShowNavContent
+		getUrlXMLResponse(url, showRelatedVideosResponse);
+	}
+	function showRelatedVideosResponse(req) {
+		document.getElementById(self.nameprefix + "Div").innerHTML=getNodeValue(req.responseXML, "html_content");
+		setContentLoaded(self.nameprefix);
+		
+		if(self.postShowNavContent) {
+			self.postShowNavContent();
+		}
+	}
+		
+	function setContentLoaded(nameprefix) {
+		selectNavLink(nameprefix + "Link");
+		contentTab[nameprefix] = 1;
+	}
+	function showAjaxDivNotLoggedIn(divName, url) {
+			self.divName = divName
+			self.showAjaxDivResponse = showAjaxDivResponse
+			getUrlXMLResponse(url, self.showAjaxDivResponse);
+	}
+	function showAjaxDiv(divName, url) {
+		if(CheckLogin()) {
+			showAjaxDivNotLoggedIn(divName,url)
+		} else {
+			alert("Please login to perform this operation.");
+		}
+	}
+	function showAjaxDivResponse(req) {
+		document.getElementById(self.divName).innerHTML=getNodeValue(req.responseXML, "html_content");
+		openDiv(self.divName);
+	}
+	
+	function postAjaxForm(divName, formName) {
+		self.postAjaxFormCompleted = postAjaxFormCompleted;	
+		self.divName = divName;
+		
+		postFormXMLResponse(formName, self.postAjaxFormCompleted);
+	}
+	function postAjaxFormCompleted(req) {
+		if(self.divName != null)
+			hideAjaxDiv(self.divName);
+	}
+	function hideAjaxDiv(divName) {
+		closeDiv(divName);
+	}
+	
+	function xmlrpccallback(req) {
+		alert('xmlrpccallback: ' + req.responseText);
+	}
+
+	function debugCompleted(req) {
+		url = getNodeValue(req.responseXML, 'url');
+		xmldata = getNodeValue(req.responseXML, 'xmldata');
+		proxy = getNodeValue(req.responseXML, 'proxy');
+		//alert('url: '+ url + '\nxmldata: ' + xmldata);
+		postUrlXMLResponse(url, xmldata, xmlrpccallback);
+		//alert ("url: " + url + "\nxmldata: " + xmldata + "\nproxy: " + proxy);
+	}
+
+
+		
+				onLoadFunctionList.push(function() { imagesInit_video_responses();} );
+
+		function imagesInit_video_responses() {
+			imageBrowsers['video_responses'] = new ImageBrowser(1, 1, "video_responses");
+				
+				
+				
+				
+				
+				
+				imageBrowsers['video_responses'].addImage(new customYtImage("https://web.archive.org/web/20061208083125/http://sjc-static10.sjc.youtube.com/vi/nssfmTo7SZg/2.jpg", 
+													  "/watch?v=nssfmTo7SZg&watch_response",
+													  "\n<a href=\'/user/jawed\'>jawed</a>\n\n", 
+													  "",
+													  "",
+													  false) );
+			imageBrowsers['video_responses'].initDisplay();
+			imageBrowsers['video_responses'].showImages();
+			images_loaded = true;
+		}
+
+	
+	function getXMLRPCData(divName, formName) {
+		self.callback = debugCompleted;
+		postFormXMLResponse(formName, self.callback);
+	}
+	
+	
+	// Player stuff
+	
+	function openFull()
+	{
+	  var fs = window.open( "/watch_fullscreen?video_id=jNQXAC9IVRw&l=18&t=OEgsToPDskJKiYzwsWzlgHVW3fg29km-&fs=1&title=" + "Me at the zoo" ,
+			   "FullScreenVideo", "toolbar=no,width=" + screen.availWidth  + ",height=" + screen.availHeight 
+			 + ",status=no,resizable=yes,fullscreen=yes,scrollbars=no");
+	  fs.focus();
+	}
+	
+	function gotoNext()
+	{
+	}
+	
+	function hideDiv(d) 
+	{                   
+		d.style.display = "none";
+	}               
+	
+	function showDiv(d)
+	{
+		d.style.display = "block";
+	}
+	
+	function autoNext()
+	{
+		var p = document.getElementById("movie_player");
+		p.SetVariable("playnext", "1");
+	
+		var pa = document.getElementById("playall");
+		var pga = document.getElementById("playingall");
+		hideDiv(pa);
+		showDiv(pga);
+	}
+
+	function postToTrackerForWatch(time_played)
+	{
+	}
+
+
+		function showCommentReplyForm(form_id, reply_parent_id, is_main_comment_form) {
+		if(!CheckLogin()) {
+			alert("Please login to post a comment.");
+			return false;
+		}
+			
+		printCommentReplyForm(form_id, reply_parent_id, is_main_comment_form);
+	}
+	function printCommentReplyForm(form_id, reply_parent_id, is_main_comment_form) {
+
+		var div_id = "div_" + form_id;
+		var reply_id = "reply_" + form_id;
+		var reply_comment_form = "comment_form" + form_id;
+		
+		if (is_main_comment_form)
+			discard_visible="style='display: none'";
+		else
+			discard_visible="";
+		
+		var innerHTMLContent = '\
+		<form name="' + reply_comment_form + '" id="' + reply_comment_form + '" method="post" action="/comment_servlet" >\
+			<input type="hidden" name="video_id" value="jNQXAC9IVRw">\
+			<input type="hidden" name="add_comment" value="">\
+			<input type="hidden" name="form_id" value="' + reply_comment_form + '">\
+			<input type="hidden" name="reply_parent_id" value="' + reply_parent_id + '">\
+			<input type="hidden" name="comment_type" value="V">\
+			<textarea tabindex="2" name="comment" cols="55" rows="3"></textarea>\
+			<br>\
+			<input align="right" type="button" name="add_comment_button" \
+								value="Post Comment" \
+								onclick="postThreadedComment(\'' + reply_comment_form + '\');">\
+			<input align="right" type="button" name="discard_comment_button"\
+								value="Discard" ' + discard_visible + '\
+								onclick="hideCommentReplyForm(\'' + form_id + '\',false);">\
+		</form><br><br>';
+		if(!is_main_comment_form) {
+			toggleVisibility(reply_id, false);
+		}
+		setInnerHTML(div_id, innerHTMLContent);
+		toggleVisibility(div_id, true);
+	}
+
+	
+	
+	function blockUser(form) 
+	{
+        if (!confirm("Are you sure you want to block this user?"))
+            return false;
+
+		postFormByForm(form, true, execOnSuccess(function (xmlHttpRequest) { 
+			response_str = xmlHttpRequest.responseText;
+			if(response_str == "SUCCESS") {
+				form.block_button.value = "User blocked"
+			} else {
+				alert ("An error occured while blocking the user.");
+				form.block_button.value = "Block this user"
+				form.block_button.disabled = false;
+			}
+		}));
+		form.block_button.disabled = true
+		form.block_button.value = "Please wait.."
+		return true;
+	}
+	function unblockUser(form) 
+	{
+        if (!confirm("Are you sure you want to unblock this user?"))
+            return false;
+
+		postFormByForm(form, true, execOnSuccess(function (xmlHttpRequest) { 
+			response_str = xmlHttpRequest.responseText;
+			if(response_str == "SUCCESS") {
+				form.unblock_button.value = "User unblocked"
+			} else {
+				alert ("An error occured while unblocking the user.");
+				form.unblock_button.value = "Unblock this user"
+				form.unblock_button.disabled = false;
+			}
+		}));
+
+		form.unblock_button.disabled = true
+		form.unblock_button.value = "Please wait.."
+		return true;
+	}
+	
+	function unblockUserLink(friend_id, url)
+	{
+        if (!confirm("Are you sure you want to unblock this user?"))
+            return true;
+		getUrlSync("/link_servlet?unblock_user=1&friend_id=" + friend_id);
+	    window.location.href = url;
+		return true;
+	}
+	function blockUserLink(friend_id, url)
+	{
+        if (!confirm("Are you sure you want to block this user?"))
+            return true;
+		getUrlSync("/link_servlet?block_user=1&friend_id=" + friend_id);
+	    window.location.href = url;
+		return true;
+	}
+
+
+
+
+	
+	
+		onLoadFunctionList.push(function() { setContentLoaded("exRelated"); } );
+	
+	
+	function selectNavLink (linkName) {
+		if (linkName == "exRelatedLink") {
+			closeDiv("exUserDiv");
+			closeDiv("exPlaylistDiv");
+			openDiv("exRelatedDiv");
+			unSelectLink("exPlaylistLink");
+			unSelectLink("exUserLink");
+			selectLink("exRelatedLink");
+			blurElement("exRelatedLink");
+			replaceExploreTab("exploreMoreTabs", "/img/btn_exploretab_related_300x34.gif");
+		}
+		if (linkName == "exPlaylistLink") {
+			closeDiv("exRelatedDiv");
+			closeDiv("exUserDiv");
+			openDiv("exPlaylistDiv");
+			unSelectLink("exUserLink");
+			unSelectLink("exRelatedLink");
+			selectLink("exPlaylistLink");
+			blurElement("exPlaylistLink");
+			replaceExploreTab("exploreMoreTabs", "/img/btn_exploretab_playlist_300x34.gif");
+		}
+		if (linkName == "exUserLink") {
+			closeDiv("exRelatedDiv");
+			closeDiv("exPlaylistDiv");
+			openDiv("exUserDiv");
+			unSelectLink("exPlaylistLink");
+			unSelectLink("exRelatedLink");
+			selectLink("exUserLink");
+			blurElement("exUserLink");
+			replaceExploreTab("exploreMoreTabs", "/img/btn_exploretab_morefromuser_300x34.gif");
+		}
+	}
+	
+	function replaceExploreTab(elid, imgSrc) {
+		var theElement = document.getElementById(elid);
+		if (theElement) {
+			theElement.src = imgSrc;
+		}
+	}
+
+</script>
+
+</head>
+
+
+<body onload="performOnLoadFunctions();">
+
+<div id="baseDiv">	
+		<div id="logoTagDiv">
+	<a href="https://web.archive.org/web/20061208083125/https://www.youtube.com/" name="&amp;lid=Logo&amp;lpos=GlobalNav"><img src="https://web.archive.org/web/20061208083125im_/https://www.youtube.com/img/pic_youtubelogo_123x63.gif" alt="YouTube" width="123" height="63" border="0"></a>
+	</div>
+
+	<div id="utilDiv">
+	
+		<b><a href="https://web.archive.org/web/20061208083125/https://www.youtube.com/signup" onclick="_hbLink('SignUp','UtilityLinks');">Sign Up</a></b>
+		<span class="utilDelim">|</span>
+		<a href="https://web.archive.org/web/20061208083125/https://www.youtube.com/my_account">My Account</a>
+		<span class="utilDelim">|</span>
+		<a href="https://web.archive.org/web/20061208083125/https://www.youtube.com/recently_watched" onclick="_hbLink('ViewingHistory','UtilityLinks');">History</a>
+		<span class="utilDelim">|</span>
+		<a href="https://web.archive.org/web/20061208083125/https://www.youtube.com/watch_queue?all" onclick="_hbLink('QuickList','UtilityLinks');">QuickList</a>
+		(<span id="quicklist_numb"><a href="https://web.archive.org/web/20061208083125/https://www.youtube.com/watch_queue?all"><script type="text/javascript">var quicklist_count=0;document.write(quicklist_count);</script></a></span>)                        
+		<span class="utilDelim">|</span>
+		<a href="https://web.archive.org/web/20061208083125/https://www.youtube.com/t/help_center">Help</a>
+		<span class="utilDelim">|</span>
+		<a href="https://web.archive.org/web/20061208083125/https://www.youtube.com/login?next=/watch%253Fv%253DjNQXAC9IVRw" onclick="_hbLink('LogIn','UtilityLinks');">Log In</a>
+	<form name="logoutForm" method="post" action="https://web.archive.org/web/20061208083125/https://www.youtube.com/index">
+		<input type="hidden" name="action_logout" value="1">
+	</form>
+</div>
+
+	
+	<div id="searchDiv">
+		<form name="searchForm" id="searchForm" method="get" action="https://web.archive.org/web/20061208083125/https://www.youtube.com/results">
+		<input tabindex="10000" type="text" name="search_query" maxlength="128" class="searchField" value="">
+		&nbsp;
+		<input type="submit" name="search" value="Search">
+	</form>
+
+	</div>
+		
+	<div id="gNavDiv">
+		
+		
+		<div id="upload"><a href="https://web.archive.org/web/20061208083125/https://www.youtube.com/my_videos_upload"><img src="https://web.archive.org/web/20061208083125im_/https://www.youtube.com/img/pic_upload_130x28.gif" width="130" height="28" alt="upload" border="0"/></a></div>
+
+		<div class="tab">
+			<a href="https://web.archive.org/web/20061208083125/https://www.youtube.com/community"><img src="https://web.archive.org/web/20061208083125im_/https://www.youtube.com/img/tab_community_118x28.gif" width="118" height="28" border="0" alt="community"/></a></div>
+		<div class="tab">
+			<a href="https://web.archive.org/web/20061208083125/https://www.youtube.com/members"><img src="https://web.archive.org/web/20061208083125im_/https://www.youtube.com/img/tab_channels_118x28.gif" width="118" height="28" border="0" alt="channels"/></a></div>
+		<div class="tab">
+			<a href="https://web.archive.org/web/20061208083125/https://www.youtube.com/categories"><img src="https://web.archive.org/web/20061208083125im_/https://www.youtube.com/img/tab_categories_118x28.gif" width="118" height="28" border="0" alt="categories"/></a></div>
+		<div class="tab">
+			<a href="https://web.archive.org/web/20061208083125/https://www.youtube.com/browse?s=mp"><img src="https://web.archive.org/web/20061208083125im_/https://www.youtube.com/img/tab_videos_select_118x28.gif" width="118" height="28" border="0" alt="videos"/></a></div>
+	</div>
+<!-- end gNavDiv -->
+		<div id="gNavBottom">&nbsp;</div>
+
+
+	
+	
+	
+	
+
+
+
+
+
+
+<div id="leaderboardAd">
+ 
+ 		
+		
+			
+
+	
+							<!-- begin ad tag -->
+	<script type="text/javascript">
+		ord=Math.random()*10000000000000000 + 1;
+		document.write('<script language="JavaScript" src="https://web.archive.org/web/20061208083125/http://ad.doubleclick.net/adj/you.watch/comedy;sz=728x90;kch=2179803025;kbg=FFFFFF;kr=C;kpu=jawed;kvideoid=jNQXAC9IVRw;ord=' + ord + '?" type="text/javascript"><\/script>');
+	</script>
+	<noscript><a href="https://web.archive.org/web/20061208083125/http://ad.doubleclick.net/jump/you.watch/comedy;sz=728x90;ord=123456789" target="_blank"><img src="https://web.archive.org/web/20061208083125im_/http://ad.doubleclick.net/ad/you.watch/comedy;sz=728x90;ord=123456789" width="728" height="90" border="0" alt=""></a>
+	</noscript>
+	<!-- End ad tag -->
+	
+
+		
+
+</div>
+
+
+
+
+
+<!-- begin main presentation code -->
+
+<h1 id="video_title">Me at the zoo</h1>
+
+<table cellpadding="0" cellspacing="0" align="center"><tr valign="top">
+<td>
+<div id="interactDiv">
+
+	<div id="playerDiv">
+		<div style="padding: 20px; font-size:14px; font-weight: bold;">
+			Hello, you either have JavaScript turned off or an old version of Macromedia's Flash Player. <a href="https://web.archive.org/web/20061208083125/http://www.macromedia.com/go/getflashplayer/" onclick="_hbLink('Get+Flash','Watch');">Get the latest flash player</a>.
+		</div>
+	</div>
+	<script type="text/javascript">
+		// <![CDATA[
+		var fo = new SWFObject("/player2.swf?video_id=jNQXAC9IVRw&l=18&t=OEgsToPDskJKiYzwsWzlgHVW3fg29km-", "movie_player", "450", "370", 7, "#FFFFFF");
+		fo.write("playerDiv");
+		// ]]>
+	</script>
+
+
+
+	
+
+
+
+	<div id="watchqueueStartNew" class="quicklist_container hid">
+	
+		<div><img src="https://web.archive.org/web/20061208083125im_/https://www.youtube.com/img/pic_curves_top_450x4.gif" border="1"/></div>
+		<div id="nextvideoRow" class="nextVideoRowDiv">
+			<table width="440" cellpadding="0" cellspacing="0" border="0">
+				<tr>
+					<td width="77" align="left" valign="top">
+						<div class="headerTitleLite">&nbsp;QuickList</div>
+					</td>
+					<td width="30" valign="top" align="right">
+							<a href="#" onclick="play_all_start_new();_hbLink('QuickList+PlayAll','Watch');return false;"><img id="play_all_buttton" hspace="4" src="https://web.archive.org/web/20061208083125im_/https://www.youtube.com/img/pixel.gif" border="0" valign="top" height="25" width="33" alt="Play All Videos"/></a>
+									</td>
+					<td width="53" valign="top">
+								<div id="playall" class="smallText">
+								<b><a href="#" onclick="autoNext();gotoNext();return false;">Play All</a></b></div>
+								<div id="playingall" class="grayText smallText hid">Playing All</div>
+						<span id="play_all_numb" class="smallText grayText">
+						<script language="javascript" type="text/javascript">document.write(quicklist_count);</script>
+						</span>
+						<span class="smallText grayText">
+						video<script language="javascript" type="text/javascript">if (quicklist_count>1) document.write('s');</script>
+						</span>
+					</td>
+							<td width="30" valign="top" align="right">
+							<a id="next_video_url_1" href="#"><img id="next_video_image_url" src="https://web.archive.org/web/20061208083125im_/https://www.youtube.com/img/pixel.gif" height="25" border="0" style="padding-right:2px;" align="middle"></a>
+							</td>
+							<td width="200" valign="top">
+							<div class="nextVideoDisplay">
+								<span class="grayText smallText"><b><a id="next_video_url_2" href="#">Play Next</a></b>
+								<br/><span id="next_video_title">
+								</span>
+							</div>
+							</td>	
+					<td width="40" valign="top" align="right">
+						<div id="show_button_container" class="hideShowButton">
+						   <a href="#" onclick="clickedHideShowButton();_hbLink('QuickList+ShowHide','Watch');return false;"><img id="watch_queue_show_hide" src="https://web.archive.org/web/20061208083125im_/https://www.youtube.com/img/btn_watchqueue_hide_33x25.gif" width="33" height="25" border="0" alt="Show or Hide QuickList Videos"></a>                
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+	
+		<div id="watchlist_container" class="watchlist_videos">                
+		<table id="watchlist_table" width="426" align="center" border="0" cellpadding="0" cellspacing="0">                        
+			<tr><td width="8"></td><td width="55"></td><td width="313"></td><td width="50"></td></tr>                
+		</table>
+		</div>
+
+		<div id="save_row" class="saveRowDiv" style="height:20px;display:block;">
+			<div class="saveRowSetting">
+				<span class="smallText">
+				<form id="set_pop" name="set_pop">
+				&nbsp;<input id="checkbox_pop_no_pop" type="checkbox" onclick="if(document.set_pop.quicklist_pop_nopop.checked==true) {set_pop_status(1);} else{set_pop_status(0);};" name="quicklist_pop_nopop">Remove videos as I watch them   
+				</form>
+				</span>
+			</div>
+			<div class="quicklistActions">
+			<span class="smallText"><b><a href="https://web.archive.org/web/20061208083125/https://www.youtube.com/watch_queue?all" title="Go to QuickList page" onclick="_hbLink('QuickList+ManageLink','Watch');">Manage</a> | <a href="https://web.archive.org/web/20061208083125/https://www.youtube.com/edit_playlist_info?watch_queue=1" title="Save all videos into a permanent playlist" onclick="_hbLink('QuickList+SaveLink','Watch');">Save</a> | <a href="#" onclick="javascript:return clear_watch_queue_watch_page();_hbLink('QuickList+ClearLink','Watch');return false;" title="Remove all videos from QuickList">Clear</a></b></span>
+			</div>
+		</div> <!-- end save_row -->
+		<div><img src="https://web.archive.org/web/20061208083125im_/https://www.youtube.com/img/pic_curves_bottom_450x4.gif" border="1"></div>
+	</div> <!-- end QuickList -->
+
+
+	<div id="actionsAndStatsDiv" class="contentBox">
+		<div id="ratingDivWrapper">
+			<div id="ratingDiv">
+
+	
+
+				<div id="ratingMessage">Rate this video:</div>
+							<nobr>
+			<img class="rating" src="https://web.archive.org/web/20061208083125im_/https://www.youtube.com/img/star.gif">
+			<img class="rating" src="https://web.archive.org/web/20061208083125im_/https://www.youtube.com/img/star.gif">
+			<img class="rating" src="https://web.archive.org/web/20061208083125im_/https://www.youtube.com/img/star.gif">
+			<img class="rating" src="https://web.archive.org/web/20061208083125im_/https://www.youtube.com/img/star_bg.gif">
+			<img class="rating" src="https://web.archive.org/web/20061208083125im_/https://www.youtube.com/img/star_bg.gif">
+	</nobr>
+		<div class="rating">411 ratings</div>
+	
+
+
+
+			
+		<div class="spacer"></div>
+			</div> <!-- end ratingDiv -->
+			
+		</div> <!-- end ratingDivWrapper -->
+	
+		<div class="actionsDiv">
+			<div class="actionRow">
+				<a href="#" class="noul" onclick="showAjaxDiv('addFavsDiv', '/watch_ajax?video_id=jNQXAC9IVRw&amp;action_get_playlists_component=1', true); _hbLink('Save+To+Favorites','Watch'); return false;" onmouseover=""><img src="https://web.archive.org/web/20061208083125im_/https://www.youtube.com/img/icn_fav_reg_19x17.gif" border="0" class="alignMid" alt="Save to Favorites"> <span class="eLink">Save to Favorites</span></a>
+			</div>
+			<div class="actionRow">
+				<a href="#" class="noul" onclick="showAjaxDiv('addGroupsDiv', '/watch_ajax?video_id=jNQXAC9IVRw&amp;action_get_groups_component=1', true); _hbLink('Add+To+Groups','Watch'); return false;"><img src="https://web.archive.org/web/20061208083125im_/https://www.youtube.com/img/icn_groups_reg_19x17.gif" border="0" class="alignMid" alt="Add to Groups"> <span class="eLink">Add to Groups</span></a>
+			</div>
+		</div>
+		<div class="actionsDiv sm">
+			<div class="actionRow">
+				<a href="#" class="noul" onclick="window.open('/share?v=jNQXAC9IVRw','Share','width=580,height=480,resizable=yes,scrollbars=yes,status=0'); _hbLink('Share+Video','Watch'); return false;"><img src="https://web.archive.org/web/20061208083125im_/https://www.youtube.com/img/icn_email_reg_19x17.gif" border="0" class="alignMid" alt="Share This Video"> <span class="eLink">Share Video</span></a>
+			</div>
+			<div class="actionRow">
+				<a href="#" class="noul" onclick="showAjaxDiv('blogVidDiv', '/watch_ajax?video_id=jNQXAC9IVRw&amp;action_get_user_blogs_component=1', true); _hbLink('Blog+Video','Watch'); return false;"><img src="https://web.archive.org/web/20061208083125im_/https://www.youtube.com/img/icn_web_reg_19x17.gif" border="0" class="alignMid"> <span class="eLink">Post Video</span></a>
+			</div>
+		</div>
+		<div class="actionsDiv sm">
+			<div class="actionRow">
+				<a href="#" class="noul" onclick="showAjaxDiv('inappropriateVidDiv', '/watch_ajax?video_id=jNQXAC9IVRw&amp;action_get_flag_video_component=1', true); _hbLink('Flag+Inappropriate','Watch'); return false;"><img src="https://web.archive.org/web/20061208083125im_/https://www.youtube.com/img/icn_flag_reg_19x17.gif" border="0" class="alignMid" alt="Flag as Inappropriate"> <span class="eLink">Flag as Inappropriate</span></a>
+			</div>
+		</div>
+		<div class="spacer"></div>
+		<div id="statsDiv">
+			Views: <span class="statVal">49,345</span> <div class="statDivider">|</div> 
+			Comments: <span class="statVal">165</span> <div class="statDivider">|</div>
+			Favorited: <span class="statVal">107</span>
+				times
+			<div class="statDivider">|</div> <a href="#" onclick="toggleFullStats(); return false;"><span id="moreless">more</span>&nbsp;stats...</a>
+		</div>
+		<div id="fullStats">
+			<div id="referDiv" class="moreStats">
+				<h4>Sites Linking to This Video:</h4>
+					<div class="statItem"><span class="label">1 clicks from</span> <a rel="nofollow" href="https://web.archive.org/web/20061208083125/http://www.searchthetube.com/details.php?id=jNQXAC9IVRw" target="_top">http://www.searchthetube.com/details.php?id=jNQXAC9IVRw</a></div>
+			</div>
+			<div id="honorsDiv" class="moreStats"><h3>Loading Honors...</h3></div>
+			<div id="fullStatsClose"><a href="#" onclick="toggleFullStats(); return false;">close</a></div>
+			<div class="spacer"></div>
+		</div>
+
+
+		
+
+		<div id="addFavsDiv" class="popupDiv"></div>
+		<div id="addGroupsDiv" class="popupDiv"></div>
+		<div id="blogVidDiv" class="popupDiv"></div>
+		<div id="inappropriateVidDiv" class="popupDiv"></div>
+
+	</div> <!-- end actionsAndStatsDiv -->
+
+
+
+			
+	<div id="commentsDiv">
+			<h2 style="margin: 0px;">Comments &amp; Responses</h2>
+			
+				<div id="vResponseDiv">
+		<div id="vResponseHeading">
+			<table cellpadding="0" cellspacing="0" width="100%"><tr>
+			<td>
+				<b>Video Responses</b>
+					&nbsp;(<a href="https://web.archive.org/web/20061208083125/https://www.youtube.com/video_response_view_all?v=jNQXAC9IVRw">1 responses</a>)
+			</td>
+			<td align="right">
+					<b><a href="https://web.archive.org/web/20061208083125/https://www.youtube.com/video_response_upload?v=jNQXAC9IVRw" onclick="_hbLink('Post+Video+Response','Watch');">Post a Video Response</a></b>
+			</td>
+			</tr></table>
+		</div>
+
+		
+		<div>
+				<div style="padding-left: 1px;">					
+	<table width="21" height="90" cellpadding="0" cellspacing="0">
+		<tr>
+			<td><img src="https://web.archive.org/web/20061208083125im_/https://www.youtube.com/img/LeftSingleArrowOff.gif" onclick="shiftLeft('video_responses')" border="0"></td>
+			<td>
+				<table width="392" height="90" style="background-color: #FFFFFF; " cellpadding="0" cellspacing="0">
+					<tr>
+					<td style="border-bottom:none;">
+						<div id="div_video_responses_0" style="float: left; width: 97px; padding: 1px;">
+<center>
+<a id="href_video_responses_0" href=".."><img class="videobarthumbnail_white" id="img_video_responses_0" src="https://web.archive.org/web/20061208083125im_/https://www.youtube.com/img/pixel.gif" width="80" height="60"></a>
+<div id="title1_video_responses_0" style="font-family: Arial, Helvetica, sans-serif; font-size: 10px; color: #666666; padding-bottom: 3px;">loading...</div>
+<div id="title2_video_responses_0" style="font-family: Arial, Helvetica, sans-serif; font-size: 10px; color: #666666; padding-bottom: 3px;"></div>
+</center>
+</div>
+<div id="div_video_responses_0_alternate" style="float: left; width: 97px; padding: 1px; display: none">
+	<center>
+		<div><img src="https://web.archive.org/web/20061208083125im_/https://www.youtube.com/img/pixel.gif" width="80" height="60"></div>
+		<div style="font-family: Arial, Helvetica, sans-serif; font-size: 10px; color: #666666; padding-bottom: 3px;">&nbsp;</div>
+		<div style="font-family: Arial, Helvetica, sans-serif; font-size: 10px; color: #666666; padding-bottom: 3px;">&nbsp;</div>
+	</center>
+</div>
+
+						</td>
+					</tr>
+				</table>
+			</td>
+			<td><img src="https://web.archive.org/web/20061208083125im_/https://www.youtube.com/img/RightSingleArrowOff.gif" onclick="shiftRight('video_responses');" border="0"></td>
+		</tr>
+	</table>
+	</div>
+
+		
+				
+		</div>
+	</div> <!-- end vResponseDiv -->
+
+			
+				<table cellpadding="0" cellspacing="0" width="100%"><tr>
+				<td><b class="largeText">Text Comments (165)</b></td>
+				<td align="right">
+							<div id="reply_main_comment2">
+			<b><a href="#" class="eLink" onclick="showCommentReplyForm('main_comment2', '', false); return false;" onclick="_hbLink('Post+Text+Comment','Watch');">Post a text comment</a></b>
+		</div>
+
+				</td>
+				</tr></table>
+	
+	
+	
+			
+			<div id="recent_comments">
+				
+				<div id="div_main_comment2"></div>
+				
+							<div id="div_Uoz080RO_5Q"> <!-- comment_div_id -->
+			<a name="Uoz080RO_5Q"/></a>
+			<div class="commentEntry" id="comment_Uoz080RO_5Q">
+                                <div class="commentHead">
+				<b><a href="https://web.archive.org/web/20061208083125/https://www.youtube.com/user/TuttiOfrutti">TuttiOfrutti</a></b>
+				<span class="smallText"> (3 hours ago) </span>
+			</div>
+				<div class="commentBody">
+					relax man its just a comment, wasn't serious sheesh
+				</div>
+				<div class="commentAction smallText">
+					
+
+
+	<div class="commentAction smallText" id="container_comment_form_id_Uoz080RO_5Q" style="display: none"> </div> <!-- container id -->
+		<div class="commentAction smallText" id="reply_comment_form_id_Uoz080RO_5Q">
+				(<a href="#" onclick="showCommentReplyForm('comment_form_id_Uoz080RO_5Q', 'Uoz080RO_5Q', false); return false;" class="eLink">Reply</a>) &nbsp; 
+
+		</div>
+		<div id="div_comment_form_id_Uoz080RO_5Q">
+	</div>
+
+				</div>
+			</div>
+	</div> <!-- comment_div_id -->
+
+			<div id="div_9vWetrjgqKQ"> <!-- comment_div_id -->
+			<a name="9vWetrjgqKQ"/></a>
+			<div class="commentEntry" id="comment_9vWetrjgqKQ">
+                                <div class="commentHead">
+				<b><a href="https://web.archive.org/web/20061208083125/https://www.youtube.com/user/Chilldogg">Chilldogg</a></b>
+				<span class="smallText"> (1 day ago) </span>
+			</div>
+				<div class="commentBody">
+					Is this really the first video on YouTube and have you ever given an elephant a bath?
+				</div>
+				<div class="commentAction smallText">
+					
+
+
+	<div class="commentAction smallText" id="container_comment_form_id_9vWetrjgqKQ" style="display: none"> </div> <!-- container id -->
+		<div class="commentAction smallText" id="reply_comment_form_id_9vWetrjgqKQ">
+				(<a href="#" onclick="showCommentReplyForm('comment_form_id_9vWetrjgqKQ', '9vWetrjgqKQ', false); return false;" class="eLink">Reply</a>) &nbsp; 
+
+		</div>
+		<div id="div_comment_form_id_9vWetrjgqKQ">
+	</div>
+
+				</div>
+			</div>
+	</div> <!-- comment_div_id -->
+
+			<div id="div_Xh7U_uIZgkg"> <!-- comment_div_id -->
+			<a name="Xh7U_uIZgkg"/></a>
+			<div class="commentEntry" id="comment_Xh7U_uIZgkg">
+                                <div class="commentHead">
+				<b><a href="https://web.archive.org/web/20061208083125/https://www.youtube.com/user/originalfreakboy">originalfreakboy</a></b>
+				<span class="smallText"> (1 day ago) </span>
+			</div>
+				<div class="commentBody">
+					well i just want to comment :D HI!!
+				</div>
+				<div class="commentAction smallText">
+					
+
+
+	<div class="commentAction smallText" id="container_comment_form_id_Xh7U_uIZgkg" style="display: none"> </div> <!-- container id -->
+		<div class="commentAction smallText" id="reply_comment_form_id_Xh7U_uIZgkg">
+				(<a href="#" onclick="showCommentReplyForm('comment_form_id_Xh7U_uIZgkg', 'Xh7U_uIZgkg', false); return false;" class="eLink">Reply</a>) &nbsp; 
+
+		</div>
+		<div id="div_comment_form_id_Xh7U_uIZgkg">
+	</div>
+
+				</div>
+			</div>
+	</div> <!-- comment_div_id -->
+
+			<div id="div_p9AZuEyx0KM"> <!-- comment_div_id -->
+			<a name="p9AZuEyx0KM"/></a>
+			<div class="commentEntry" id="comment_p9AZuEyx0KM">
+                                <div class="commentHead">
+				<b><a href="https://web.archive.org/web/20061208083125/https://www.youtube.com/user/simplyerik">simplyerik</a></b>
+				<span class="smallText"> (1 day ago) </span>
+			</div>
+				<div class="commentBody">
+					brilliant
+				</div>
+				<div class="commentAction smallText">
+					
+
+
+	<div class="commentAction smallText" id="container_comment_form_id_p9AZuEyx0KM" style="display: none"> </div> <!-- container id -->
+		<div class="commentAction smallText" id="reply_comment_form_id_p9AZuEyx0KM">
+				(<a href="#" onclick="showCommentReplyForm('comment_form_id_p9AZuEyx0KM', 'p9AZuEyx0KM', false); return false;" class="eLink">Reply</a>) &nbsp; 
+
+		</div>
+		<div id="div_comment_form_id_p9AZuEyx0KM">
+	</div>
+
+				</div>
+			</div>
+	</div> <!-- comment_div_id -->
+
+			<div id="div__QwQ0I7-w9E"> <!-- comment_div_id -->
+			<a name="_QwQ0I7-w9E"/></a>
+			<div class="commentEntry" id="comment__QwQ0I7-w9E">
+                                <div class="commentHead">
+				<b><a href="https://web.archive.org/web/20061208083125/https://www.youtube.com/user/deadasoren">deadasoren</a></b>
+				<span class="smallText"> (2 days ago) </span>
+			</div>
+				<div class="commentBody">
+					the first but hopefully not the last video of youtube
+				</div>
+				<div class="commentAction smallText">
+					
+
+
+	<div class="commentAction smallText" id="container_comment_form_id__QwQ0I7-w9E" style="display: none"> </div> <!-- container id -->
+		<div class="commentAction smallText" id="reply_comment_form_id__QwQ0I7-w9E">
+				(<a href="#" onclick="showCommentReplyForm('comment_form_id__QwQ0I7-w9E', '_QwQ0I7-w9E', false); return false;" class="eLink">Reply</a>) &nbsp; 
+
+		</div>
+		<div id="div_comment_form_id__QwQ0I7-w9E">
+	</div>
+
+				</div>
+			</div>
+	</div> <!-- comment_div_id -->
+
+			<div id="div_L2goaS0wrrk"> <!-- comment_div_id -->
+			<a name="L2goaS0wrrk"/></a>
+			<div class="commentEntry" id="comment_L2goaS0wrrk">
+                                <div class="commentHead">
+				<b><a href="https://web.archive.org/web/20061208083125/https://www.youtube.com/user/boltondiouf">boltondiouf</a></b>
+				<span class="smallText"> (2 days ago) </span>
+			</div>
+				<div class="commentBody">
+					dis is mint the first eva vid on youtube omg and i knwo how to save it mwhahahahahahahahahah!
+				</div>
+				<div class="commentAction smallText">
+					
+
+
+	<div class="commentAction smallText" id="container_comment_form_id_L2goaS0wrrk" style="display: none"> </div> <!-- container id -->
+		<div class="commentAction smallText" id="reply_comment_form_id_L2goaS0wrrk">
+				(<a href="#" onclick="showCommentReplyForm('comment_form_id_L2goaS0wrrk', 'L2goaS0wrrk', false); return false;" class="eLink">Reply</a>) &nbsp; 
+
+		</div>
+		<div id="div_comment_form_id_L2goaS0wrrk">
+	</div>
+
+				</div>
+			</div>
+	</div> <!-- comment_div_id -->
+
+			<div id="div_Spmb078v0x8"> <!-- comment_div_id -->
+			<a name="Spmb078v0x8"/></a>
+			<div class="commentEntry" id="comment_Spmb078v0x8">
+                                <div class="commentHead">
+				<b><a href="https://web.archive.org/web/20061208083125/https://www.youtube.com/user/silent90">silent90</a></b>
+				<span class="smallText"> (2 days ago) </span>
+			</div>
+				<div class="commentBody">
+					xD the first video, but the sound and the video not be sincronized xD (sorry bad english, im from spain xD)
+				</div>
+				<div class="commentAction smallText">
+					
+
+
+	<div class="commentAction smallText" id="container_comment_form_id_Spmb078v0x8" style="display: none"> </div> <!-- container id -->
+		<div class="commentAction smallText" id="reply_comment_form_id_Spmb078v0x8">
+				(<a href="#" onclick="showCommentReplyForm('comment_form_id_Spmb078v0x8', 'Spmb078v0x8', false); return false;" class="eLink">Reply</a>) &nbsp; 
+
+		</div>
+		<div id="div_comment_form_id_Spmb078v0x8">
+	</div>
+
+				</div>
+			</div>
+	</div> <!-- comment_div_id -->
+
+			<div id="div_spJQhRnr83k"> <!-- comment_div_id -->
+			<a name="spJQhRnr83k"/></a>
+			<div class="commentEntry" id="comment_spJQhRnr83k">
+                                <div class="commentHead">
+				<b><a href="https://web.archive.org/web/20061208083125/https://www.youtube.com/user/Kingcobra0079">Kingcobra0079</a></b>
+				<span class="smallText"> (2 days ago) </span>
+			</div>
+				<div class="commentBody">
+					Me too :)
+				</div>
+				<div class="commentAction smallText">
+					
+
+
+	<div class="commentAction smallText" id="container_comment_form_id_spJQhRnr83k" style="display: none"> </div> <!-- container id -->
+		<div class="commentAction smallText" id="reply_comment_form_id_spJQhRnr83k">
+				(<a href="#" onclick="showCommentReplyForm('comment_form_id_spJQhRnr83k', 'spJQhRnr83k', false); return false;" class="eLink">Reply</a>) &nbsp; 
+
+		</div>
+		<div id="div_comment_form_id_spJQhRnr83k">
+	</div>
+
+				</div>
+			</div>
+	</div> <!-- comment_div_id -->
+
+			<div id="div_RGKYk-kSfHc"> <!-- comment_div_id -->
+			<a name="RGKYk-kSfHc"/></a>
+			<div class="commentEntry" id="comment_RGKYk-kSfHc">
+                                <div class="commentHead">
+				<b><a href="https://web.archive.org/web/20061208083125/https://www.youtube.com/user/Scarfacepacker1">Scarfacepacker1</a></b>
+				<span class="smallText"> (3 days ago) </span>
+			</div>
+				<div class="commentBody">
+					I Commented on the first video of youtube!
+				</div>
+				<div class="commentAction smallText">
+					
+
+
+	<div class="commentAction smallText" id="container_comment_form_id_RGKYk-kSfHc" style="display: none"> </div> <!-- container id -->
+		<div class="commentAction smallText" id="reply_comment_form_id_RGKYk-kSfHc">
+				(<a href="#" onclick="showCommentReplyForm('comment_form_id_RGKYk-kSfHc', 'RGKYk-kSfHc', false); return false;" class="eLink">Reply</a>) &nbsp; 
+
+		</div>
+		<div id="div_comment_form_id_RGKYk-kSfHc">
+	</div>
+
+				</div>
+			</div>
+	</div> <!-- comment_div_id -->
+
+			<div id="div_hQJG4AwXJII"> <!-- comment_div_id -->
+			<a name="hQJG4AwXJII"/></a>
+			<div class="commentEntry" id="comment_hQJG4AwXJII">
+                                <div class="commentHead">
+				<b><a href="https://web.archive.org/web/20061208083125/https://www.youtube.com/user/SinyoTolotolo">SinyoTolotolo</a></b>
+				<span class="smallText"> (3 days ago) </span>
+			</div>
+				<div class="commentBody">
+					I will try to spread the words about this video by emailing my friends. It is a historical one and deserve more attention.
+				</div>
+				<div class="commentAction smallText">
+					
+
+
+	<div class="commentAction smallText" id="container_comment_form_id_hQJG4AwXJII" style="display: none"> </div> <!-- container id -->
+		<div class="commentAction smallText" id="reply_comment_form_id_hQJG4AwXJII">
+				(<a href="#" onclick="showCommentReplyForm('comment_form_id_hQJG4AwXJII', 'hQJG4AwXJII', false); return false;" class="eLink">Reply</a>) &nbsp; 
+
+		</div>
+		<div id="div_comment_form_id_hQJG4AwXJII">
+	</div>
+
+				</div>
+			</div>
+	</div> <!-- comment_div_id -->
+
+
+
+
+					<div class="commentPagination">
+		Most Recent
+	&nbsp;...&nbsp;
+			<span class="commentPnum">1</span>
+			<span class="commentPnum"><a href="#" onclick="showAjaxDivNotLoggedIn('recent_comments', '/watch_ajax?v=jNQXAC9IVRw&amp;action_get_comments=1&amp;p=2', true); return false;">2</a></span>
+			<span class="commentPnum"><a href="#" onclick="showAjaxDivNotLoggedIn('recent_comments', '/watch_ajax?v=jNQXAC9IVRw&amp;action_get_comments=1&amp;p=3', true); return false;">3</a></span>
+			<span class="commentPnum"><a href="#" onclick="showAjaxDivNotLoggedIn('recent_comments', '/watch_ajax?v=jNQXAC9IVRw&amp;action_get_comments=1&amp;p=4', true); return false;">4</a></span>
+			<span class="commentPnum"><a href="#" onclick="showAjaxDivNotLoggedIn('recent_comments', '/watch_ajax?v=jNQXAC9IVRw&amp;action_get_comments=1&amp;p=5', true); return false;">5</a></span>
+			<span class="commentPnum"><a href="#" onclick="showAjaxDivNotLoggedIn('recent_comments', '/watch_ajax?v=jNQXAC9IVRw&amp;action_get_comments=1&amp;p=6', true); return false;">6</a></span>
+			<span class="commentPnum"><a href="#" onclick="showAjaxDivNotLoggedIn('recent_comments', '/watch_ajax?v=jNQXAC9IVRw&amp;action_get_comments=1&amp;p=7', true); return false;">7</a></span>
+			<span class="commentPnum"><a href="#" onclick="showAjaxDivNotLoggedIn('recent_comments', '/watch_ajax?v=jNQXAC9IVRw&amp;action_get_comments=1&amp;p=8', true); return false;">8</a></span>
+	&nbsp;...&nbsp;
+		<a href="#" onclick="showAjaxDivNotLoggedIn('recent_comments', '/watch_ajax?v=jNQXAC9IVRw&amp;action_get_comments=1&amp;p=17', true); return false;">Oldest</a></b>
+	</div>
+
+				
+			</div> <!-- end recent_comments -->
+
+			<b><a href="https://web.archive.org/web/20061208083125/https://www.youtube.com/comment_servlet?all_comments&amp;v=jNQXAC9IVRw&amp;fromurl=/watch%253Fv%253DjNQXAC9IVRw" onclick="_hbLink('View+All+Comments','Watch');">View all 165 comments</a></b>
+
+	
+	
+		<div id="all_comments" style="display: none;">
+				
+				<div id="div_main_comment2"></div>
+				
+				<div id="all_comments_content">
+				</div>
+		</div> <!-- end all_comments -->
+
+	
+			<div id="commentPostDiv">
+				<h2 style="margin: 0px;">Would you like to comment?</h2>
+				<div style="margin-top: 8px;">
+					<a href="https://web.archive.org/web/20061208083125/https://www.youtube.com/signup">Join YouTube</a> for a free account, or
+					<a href="https://web.archive.org/web/20061208083125/https://www.youtube.com/signup_login">Login</a> if you are already a member.
+				</div>
+			</div> <!-- end post a comment section -->
+			
+			<div id="div_main_comment"></div>
+	</div> <!-- end commentsDiv -->
+	
+</div> <!-- end interactDiv -->
+</td>
+
+
+
+<td>
+
+<div id="aboutExploreDiv">
+	<div id="aboutVidDiv" class="contentBox">
+		<div id="uploaderInfo">
+		
+		<div id="subscribeDiv" class="smallText">
+			<div><a href="#" onclick="showAjaxDiv('emptydiv','/ajax_subscriptions?subscribe_to_user=jawed',false); return false;" title="subscribe to jawed's videos"><img src="https://web.archive.org/web/20061208083125im_/https://www.youtube.com/img/btn_subscribe_sm_yellow_99x16.gif" width="99" height="16" class="alignMid" alt="subscribe" border="0" title="subscribe to jawed's videos"></a></div>
+			<div id="emptydiv">							<div id="subscribeCount" class="smallText">to jawed</div>
+			</div>
+		</div> <!-- end subscribeDiv -->
+		
+		<div id="userInfoDiv">
+			<span class="smallLabel">Added</span>&nbsp;
+			<b class="smallText">April 23, 2005</b><br>
+			<span class="smallLabel">From</span>&nbsp;
+			<b><a href="https://web.archive.org/web/20061208083125/https://www.youtube.com/user/jawed" onclick="_hbLink('ChannelLink','Watch');">jawed</a></b>
+		</div> <!-- end userInfoDiv -->
+
+	
+			
+			
+			<table id="aboutDirectorTable" cellpadding="0" cellspacing="0">
+			<tr> 
+				<td align="center" width="96"><div class="img">				
+						<div><a href="https://web.archive.org/web/20061208083125/https://www.youtube.com/user/jawed"><img src="https://web.archive.org/web/20061208083125im_/http://sjl-static4.sjl.youtube.com/vi/jNQXAC9IVRw/2.jpg" border="0"></a></div>
+						<div id="directorLogo"><a href="https://web.archive.org/web/20061208083125/https://www.youtube.com/director"><img src="https://web.archive.org/web/20061208083125im_/https://www.youtube.com/img/pic_badge_director_90x18.gif" border="0"></a></div>
+					</div>
+				</td>
+			
+			<td class="smallText"><div class="label">Provided By:</div>
+				<div>
+				<a href="https://web.archive.org/web/20061208083125/https://www.youtube.com/user/jawed">jawed</a>
+				</div>
+				
+			</td></tr>
+			</table>
+
+		</div> <!-- end uploaderInfo -->
+		
+		
+		
+		
+        <div id="vidDescDiv">
+        	
+			<span id="vidDescBegin">
+			The first video on YouTube.
+			</span>
+		</div>
+		
+
+			<div class="smallText">
+			<span class="smallLabel">Category&nbsp;</span>
+			<a href="https://web.archive.org/web/20061208083125/https://www.youtube.com/browse?s=mp&amp;t=t&amp;c=23" class="dg" onclick="_hbLink('Video+Category+Link','Watch');">Comedy</a>
+			</div>
+
+
+		<div id="vidFacetsDiv">
+            <form name="urlForm" id="urlForm">
+            <table cellpadding="0" cellspacing="0" id="vidFacetsTable">
+            <tr><td class="label">Tags</td>
+            <td class="tags">		
+				<span id="vidTagsBegin">
+<a href="https://web.archive.org/web/20061208083125/https://www.youtube.com/results?search_query=zoo" class="dg">zoo</a> &nbsp; <a href="https://web.archive.org/web/20061208083125/https://www.youtube.com/results?search_query=jawed" class="dg">jawed</a> &nbsp; <a href="https://web.archive.org/web/20061208083125/https://www.youtube.com/results?search_query=elephant" class="dg">elephant</a> &nbsp; <a href="https://web.archive.org/web/20061208083125/https://www.youtube.com/results?search_query=youtube" class="dg">youtube</a>				</span>
+			</td>
+			</tr>
+            <tr><td class="label">URL</td>
+            <td>
+            <input name="video_link" type="text" value="http://www.youtube.com/watch?v=jNQXAC9IVRw" class="vidURLField" onclick="javascript:document.urlForm.video_link.focus();document.urlForm.video_link.select();" readonly="true">
+            </td>
+            </tr>
+            <tr><td class="smallLabel">Embed</td>
+            <td>
+            <input name="embed_code" type="text" value="<object width=&quot;425&quot; height=&quot;350&quot;><param name=&quot;movie&quot; value=&quot;http://www.youtube.com/v/jNQXAC9IVRw&quot;></param><param name=&quot;wmode&quot; value=&quot;transparent&quot;></param><embed src=&quot;http://www.youtube.com/v/jNQXAC9IVRw&quot; type=&quot;application/x-shockwave-flash&quot; wmode=&quot;transparent&quot; width=&quot;425&quot; height=&quot;350&quot;></embed></object>" class="vidURLField" onclick="javascript:document.urlForm.embed_code.focus();document.urlForm.embed_code.select();" readonly="true">
+            </td></tr>
+            </table>
+            </form>
+        </div>	<!-- end vidFacetsDiv -->
+        
+		
+        
+	</div> <!-- end aboutVidDiv -->
+	
+
+
+
+	<div id="exploreDiv">
+	
+	<map name="relatedvideosmap">
+	<area shape="rect" coords="10,0,64,24" href="javascript:showRelatedVideosContent();" name="&amp;lid=RelatedVideosTab&amp;lpos=Watch">
+	<area shape="rect" coords="76,0,222,24" href="javascript:showRelatedUserContent();" name="&amp;lid=UserVideosTab&amp;lpos=Watch">
+	<area shape="rect" coords="234,0,290,24" href="javascript:showRelatedPlaylistContent();" name="&amp;lid=PlaylistsTab&amp;lpos=Watch">
+	</map>
+	<div><img id="exploreMoreTabs" src="https://web.archive.org/web/20061208083125im_/https://www.youtube.com/img/btn_exploretab_related_300x34.gif" width="300" height="34" usemap="#relatedvideosmap" alt="ExploreMoreTabs"></div>
+	<div id="exploreBody" class="contentBox" style="border-top: 0px;">
+
+
+		
+		<div id="exRelatedDiv" style="display: block;">
+			<table class="showingTable"><tr>
+	<td class="smallText">Showing 1-20 of 26961</td>
+	<td align="right" class="smallText"><a href="https://web.archive.org/web/20061208083125/https://www.youtube.com/results?search_type=related&amp;search_query=zoo%20jawed%20elephant%20youtube">See All Videos</a></td>
+	</tr></table>
+
+				<script language="javascript">	
+		var side_imgs_loaded=false;
+		function render_full_side()
+		{
+			if (!side_imgs_loaded)
+			{
+				
+					img = document.getElementById("side_img_5");
+					img.src = "https://web.archive.org/web/20061208083125/http://sjl-static1.sjl.youtube.com/vi/qklxEodgW6s/2.jpg";
+				
+					img = document.getElementById("side_img_6");
+					img.src = "https://web.archive.org/web/20061208083125/http://sjc-static12.sjc.youtube.com/vi/6Oa-j7IqEi8/2.jpg";
+				
+					img = document.getElementById("side_img_7");
+					img.src = "https://web.archive.org/web/20061208083125/http://sjc-static16.sjc.youtube.com/vi/lUqxtIGjUVw/2.jpg";
+				
+					img = document.getElementById("side_img_8");
+					img.src = "https://web.archive.org/web/20061208083125/http://sjc-static12.sjc.youtube.com/vi/AUjGbceH-kA/2.jpg";
+				
+					img = document.getElementById("side_img_9");
+					img.src = "https://web.archive.org/web/20061208083125/http://sjl-static15.sjl.youtube.com/vi/PwItiQ9TBF0/2.jpg";
+				
+					img = document.getElementById("side_img_10");
+					img.src = "https://web.archive.org/web/20061208083125/http://sjl-static6.sjl.youtube.com/vi/wvBtwELcVkQ/2.jpg";
+				
+					img = document.getElementById("side_img_11");
+					img.src = "https://web.archive.org/web/20061208083125/http://sjl-static16.sjl.youtube.com/vi/genQ8RPFrhY/2.jpg";
+				
+					img = document.getElementById("side_img_12");
+					img.src = "https://web.archive.org/web/20061208083125/http://sjl-static6.sjl.youtube.com/vi/eGj2_TJX7ME/2.jpg";
+				
+					img = document.getElementById("side_img_13");
+					img.src = "https://web.archive.org/web/20061208083125/http://sjc-static9.sjc.youtube.com/vi/BtMNE1rccHk/2.jpg";
+				
+					img = document.getElementById("side_img_14");
+					img.src = "https://web.archive.org/web/20061208083125/http://sjc-static4.sjc.youtube.com/vi/ZtEpOb_E5kM/2.jpg";
+				
+					img = document.getElementById("side_img_15");
+					img.src = "https://web.archive.org/web/20061208083125/http://sjc-static17.sjc.youtube.com/vi/X5heOsRK2AA/2.jpg";
+				
+					img = document.getElementById("side_img_16");
+					img.src = "https://web.archive.org/web/20061208083125/http://sjl-static3.sjl.youtube.com/vi/dmirvl5hagI/2.jpg";
+				
+					img = document.getElementById("side_img_17");
+					img.src = "https://web.archive.org/web/20061208083125/http://sjl-static9.sjl.youtube.com/vi/yY0ZUVegDlY/2.jpg";
+				
+					img = document.getElementById("side_img_18");
+					img.src = "https://web.archive.org/web/20061208083125/http://sjc-static7.sjc.youtube.com/vi/YN05lbIBxMw/2.jpg";
+				
+					img = document.getElementById("side_img_19");
+					img.src = "https://web.archive.org/web/20061208083125/http://sjl-static4.sjl.youtube.com/vi/efUVmXxR3pI/2.jpg";
+				
+				side_imgs_loaded = true;
+			}
+		}
+		</script>
+
+		<div id="side_results" class="exploreContent" name="side_results" onscroll="render_full_side()">
+		<div class="vWatchEntry vNowPlaying ">
+                <table><tr>
+                <td>
+                        <div class="img" style="margin-top:0px;">
+                                <a href="https://web.archive.org/web/20061208083125/https://www.youtube.com/watch?v=jNQXAC9IVRw&amp;mode=related&amp;search=" onclick="_hbLink('RelatedVideo','ExploreMore');"><img class="vimgSm" src="https://web.archive.org/web/20061208083125im_/http://sjl-static4.sjl.youtube.com/vi/jNQXAC9IVRw/2.jpg"/></a>
+                        </div>
+			<div id="add_img_jNQXAC9IVRw" class="addtoQLRelatedIE">
+				<a href="#" onclick="clicked_add_icon('jNQXAC9IVRw', 1);print_quicklist_video('https://web.archive.org/web/20061208083125/http://sjl-static4.sjl.youtube.com/vi/jNQXAC9IVRw/2.jpg',document.getElementById('video_title_text_0_49130_18').innerHTML,'jawed','jNQXAC9IVRw','00:18');_hbLink('QuickList+AddTo','Watch');return false;" title="Add Video to QuickList"><img id="add_button_jNQXAC9IVRw" border="0" onmouseover="mouse_over_add_icon('jNQXAC9IVRw');return false;" onmouseout="mouse_out_add_icon('jNQXAC9IVRw');return false;" src="https://web.archive.org/web/20061208083125im_/https://www.youtube.com/img/icn_add_20x20.gif" alt="Add Video to QuickList"></a>
+                        </div>
+               </td>
+		<td><div class="title" onclick="_hbLink('RelatedVideo','ExploreMore');"><a href="https://web.archive.org/web/20061208083125/https://www.youtube.com/watch?v=jNQXAC9IVRw&amp;mode=related&amp;search=" id="video_title_text_0_49130_18">Me at the zoo</a><br/>
+			<span class="runtime">00:18</span>
+			</div>
+			<div class="facets">
+				<span class="grayText">From:</span> <a href="https://web.archive.org/web/20061208083125/https://www.youtube.com/user/jawed" class="dg">jawed</a><br/>
+				<span class="grayText">Views:</span> 49130
+			</div>
+				<div class="smallText">
+				<b>&lt;&lt; Now Playing</b>
+				</div>
+			</div></td>
+		</tr></table>
+		</div> <!-- end vWatchEntry -->
+		<div class="vWatchEntry  ">
+                <table><tr>
+                <td>
+                        <div class="img" style="margin-top:0px;">
+                                <a href="https://web.archive.org/web/20061208083125/https://www.youtube.com/watch?v=A2y_LEbdEVE&amp;mode=related&amp;search=" onclick="_hbLink('RelatedVideo','ExploreMore');"><img class="vimgSm" src="https://web.archive.org/web/20061208083125im_/http://sjc-static5.sjc.youtube.com/vi/A2y_LEbdEVE/2.jpg"/></a>
+                        </div>
+			<div id="add_img_A2y_LEbdEVE" class="addtoQLRelatedIE">
+				<a href="#" onclick="clicked_add_icon('A2y_LEbdEVE', 1);print_quicklist_video('https://web.archive.org/web/20061208083125/http://sjc-static5.sjc.youtube.com/vi/A2y_LEbdEVE/2.jpg',document.getElementById('video_title_text_1_30766_42').innerHTML,'ChrisOntiveros','A2y_LEbdEVE','00:42');_hbLink('QuickList+AddTo','Watch');return false;" title="Add Video to QuickList"><img id="add_button_A2y_LEbdEVE" border="0" onmouseover="mouse_over_add_icon('A2y_LEbdEVE');return false;" onmouseout="mouse_out_add_icon('A2y_LEbdEVE');return false;" src="https://web.archive.org/web/20061208083125im_/https://www.youtube.com/img/icn_add_20x20.gif" alt="Add Video to QuickList"></a>
+                        </div>
+               </td>
+		<td><div class="title" onclick="_hbLink('RelatedVideo','ExploreMore');"><a href="https://web.archive.org/web/20061208083125/https://www.youtube.com/watch?v=A2y_LEbdEVE&amp;mode=related&amp;search=" id="video_title_text_1_30766_42">Elephant Eats Poop</a><br/>
+			<span class="runtime">00:42</span>
+			</div>
+			<div class="facets">
+				<span class="grayText">From:</span> <a href="https://web.archive.org/web/20061208083125/https://www.youtube.com/user/ChrisOntiveros" class="dg">ChrisOntiveros</a><br/>
+				<span class="grayText">Views:</span> 30766
+			</div>
+			</div></td>
+		</tr></table>
+		</div> <!-- end vWatchEntry -->
+		<div class="vWatchEntry  ">
+                <table><tr>
+                <td>
+                        <div class="img" style="margin-top:0px;">
+                                <a href="https://web.archive.org/web/20061208083125/https://www.youtube.com/watch?v=odyrqdl9kH8&amp;mode=related&amp;search=" onclick="_hbLink('RelatedVideo','ExploreMore');"><img class="vimgSm" src="https://web.archive.org/web/20061208083125im_/http://sjl-static13.sjl.youtube.com/vi/odyrqdl9kH8/2.jpg"/></a>
+                        </div>
+			<div id="add_img_odyrqdl9kH8" class="addtoQLRelatedIE">
+				<a href="#" onclick="clicked_add_icon('odyrqdl9kH8', 1);print_quicklist_video('https://web.archive.org/web/20061208083125/http://sjl-static13.sjl.youtube.com/vi/odyrqdl9kH8/2.jpg',document.getElementById('video_title_text_2_917_44').innerHTML,'showada','odyrqdl9kH8','00:44');_hbLink('QuickList+AddTo','Watch');return false;" title="Add Video to QuickList"><img id="add_button_odyrqdl9kH8" border="0" onmouseover="mouse_over_add_icon('odyrqdl9kH8');return false;" onmouseout="mouse_out_add_icon('odyrqdl9kH8');return false;" src="https://web.archive.org/web/20061208083125im_/https://www.youtube.com/img/icn_add_20x20.gif" alt="Add Video to QuickList"></a>
+                        </div>
+               </td>
+		<td><div class="title" onclick="_hbLink('RelatedVideo','ExploreMore');"><a href="https://web.archive.org/web/20061208083125/https://www.youtube.com/watch?v=odyrqdl9kH8&amp;mode=related&amp;search=" id="video_title_text_2_917_44">elephant3</a><br/>
+			<span class="runtime">00:44</span>
+			</div>
+			<div class="facets">
+				<span class="grayText">From:</span> <a href="https://web.archive.org/web/20061208083125/https://www.youtube.com/user/showada" class="dg">showada</a><br/>
+				<span class="grayText">Views:</span> 917
+			</div>
+			</div></td>
+		</tr></table>
+		</div> <!-- end vWatchEntry -->
+		<div class="vWatchEntry  ">
+                <table><tr>
+                <td>
+                        <div class="img" style="margin-top:0px;">
+                                <a href="https://web.archive.org/web/20061208083125/https://www.youtube.com/watch?v=QWOh1evLVg4&amp;mode=related&amp;search=" onclick="_hbLink('RelatedVideo','ExploreMore');"><img class="vimgSm" src="https://web.archive.org/web/20061208083125im_/http://sjl-static10.sjl.youtube.com/vi/QWOh1evLVg4/2.jpg"/></a>
+                        </div>
+			<div id="add_img_QWOh1evLVg4" class="addtoQLRelatedIE">
+				<a href="#" onclick="clicked_add_icon('QWOh1evLVg4', 1);print_quicklist_video('https://web.archive.org/web/20061208083125/http://sjl-static10.sjl.youtube.com/vi/QWOh1evLVg4/2.jpg',document.getElementById('video_title_text_3_558_19').innerHTML,'Mooshter','QWOh1evLVg4','00:19');_hbLink('QuickList+AddTo','Watch');return false;" title="Add Video to QuickList"><img id="add_button_QWOh1evLVg4" border="0" onmouseover="mouse_over_add_icon('QWOh1evLVg4');return false;" onmouseout="mouse_out_add_icon('QWOh1evLVg4');return false;" src="https://web.archive.org/web/20061208083125im_/https://www.youtube.com/img/icn_add_20x20.gif" alt="Add Video to QuickList"></a>
+                        </div>
+               </td>
+		<td><div class="title" onclick="_hbLink('RelatedVideo','ExploreMore');"><a href="https://web.archive.org/web/20061208083125/https://www.youtube.com/watch?v=QWOh1evLVg4&amp;mode=related&amp;search=" id="video_title_text_3_558_19">lelephants!</a><br/>
+			<span class="runtime">00:19</span>
+			</div>
+			<div class="facets">
+				<span class="grayText">From:</span> <a href="https://web.archive.org/web/20061208083125/https://www.youtube.com/user/Mooshter" class="dg">Mooshter</a><br/>
+				<span class="grayText">Views:</span> 558
+			</div>
+			</div></td>
+		</tr></table>
+		</div> <!-- end vWatchEntry -->
+		<div class="vWatchEntry  ">
+                <table><tr>
+                <td>
+                        <div class="img" style="margin-top:0px;">
+                                <a href="https://web.archive.org/web/20061208083125/https://www.youtube.com/watch?v=8xNEAyxXNww&amp;mode=related&amp;search=" onclick="_hbLink('RelatedVideo','ExploreMore');"><img class="vimgSm" src="https://web.archive.org/web/20061208083125im_/http://sjc-static9.sjc.youtube.com/vi/8xNEAyxXNww/2.jpg"/></a>
+                        </div>
+			<div id="add_img_8xNEAyxXNww" class="addtoQLRelatedIE">
+				<a href="#" onclick="clicked_add_icon('8xNEAyxXNww', 1);print_quicklist_video('https://web.archive.org/web/20061208083125/http://sjc-static9.sjc.youtube.com/vi/8xNEAyxXNww/2.jpg',document.getElementById('video_title_text_4_506_17').innerHTML,'AtieKayx0x','8xNEAyxXNww','00:17');_hbLink('QuickList+AddTo','Watch');return false;" title="Add Video to QuickList"><img id="add_button_8xNEAyxXNww" border="0" onmouseover="mouse_over_add_icon('8xNEAyxXNww');return false;" onmouseout="mouse_out_add_icon('8xNEAyxXNww');return false;" src="https://web.archive.org/web/20061208083125im_/https://www.youtube.com/img/icn_add_20x20.gif" alt="Add Video to QuickList"></a>
+                        </div>
+               </td>
+		<td><div class="title" onclick="_hbLink('RelatedVideo','ExploreMore');"><a href="https://web.archive.org/web/20061208083125/https://www.youtube.com/watch?v=8xNEAyxXNww&amp;mode=related&amp;search=" id="video_title_text_4_506_17">Elephants #1</a><br/>
+			<span class="runtime">00:17</span>
+			</div>
+			<div class="facets">
+				<span class="grayText">From:</span> <a href="https://web.archive.org/web/20061208083125/https://www.youtube.com/user/AtieKayx0x" class="dg">AtieKayx0x</a><br/>
+				<span class="grayText">Views:</span> 506
+			</div>
+			</div></td>
+		</tr></table>
+		</div> <!-- end vWatchEntry -->
+		<div class="vWatchEntry  ">
+                <table><tr>
+                <td>
+                        <div class="img" style="margin-top:0px;">
+                                <a href="https://web.archive.org/web/20061208083125/https://www.youtube.com/watch?v=qklxEodgW6s&amp;mode=related&amp;search=" onclick="_hbLink('RelatedVideo','ExploreMoreHidden');"><img class="vimgSm" id="side_img_5" src="https://web.archive.org/web/20061208083125im_/https://www.youtube.com/img/pixel.gif"/></a>
+                        </div>
+			<div id="add_img_qklxEodgW6s" class="addtoQLRelatedIE">
+				<a href="#" onclick="clicked_add_icon('qklxEodgW6s', 1);print_quicklist_video('https://web.archive.org/web/20061208083125/http://sjl-static1.sjl.youtube.com/vi/qklxEodgW6s/2.jpg',document.getElementById('video_title_text_5_693_38').innerHTML,'hustoga','qklxEodgW6s','00:38');_hbLink('QuickList+AddTo','Watch');return false;" title="Add Video to QuickList"><img id="add_button_qklxEodgW6s" border="0" onmouseover="mouse_over_add_icon('qklxEodgW6s');return false;" onmouseout="mouse_out_add_icon('qklxEodgW6s');return false;" src="https://web.archive.org/web/20061208083125im_/https://www.youtube.com/img/icn_add_20x20.gif" alt="Add Video to QuickList"></a>
+                        </div>
+               </td>
+		<td><div class="title" onclick="_hbLink('RelatedVideo','ExploreMore');"><a href="https://web.archive.org/web/20061208083125/https://www.youtube.com/watch?v=qklxEodgW6s&amp;mode=related&amp;search=" id="video_title_text_5_693_38">Day at the Zoo</a><br/>
+			<span class="runtime">00:38</span>
+			</div>
+			<div class="facets">
+				<span class="grayText">From:</span> <a href="https://web.archive.org/web/20061208083125/https://www.youtube.com/user/hustoga" class="dg">hustoga</a><br/>
+				<span class="grayText">Views:</span> 693
+			</div>
+			</div></td>
+		</tr></table>
+		</div> <!-- end vWatchEntry -->
+		<div class="vWatchEntry  ">
+                <table><tr>
+                <td>
+                        <div class="img" style="margin-top:0px;">
+                                <a href="https://web.archive.org/web/20061208083125/https://www.youtube.com/watch?v=6Oa-j7IqEi8&amp;mode=related&amp;search=" onclick="_hbLink('RelatedVideo','ExploreMoreHidden');"><img class="vimgSm" id="side_img_6" src="https://web.archive.org/web/20061208083125im_/https://www.youtube.com/img/pixel.gif"/></a>
+                        </div>
+			<div id="add_img_6Oa-j7IqEi8" class="addtoQLRelatedIE">
+				<a href="#" onclick="clicked_add_icon('6Oa-j7IqEi8', 1);print_quicklist_video('https://web.archive.org/web/20061208083125/http://sjc-static12.sjc.youtube.com/vi/6Oa-j7IqEi8/2.jpg',document.getElementById('video_title_text_6_348_9').innerHTML,'remmik','6Oa-j7IqEi8','00:09');_hbLink('QuickList+AddTo','Watch');return false;" title="Add Video to QuickList"><img id="add_button_6Oa-j7IqEi8" border="0" onmouseover="mouse_over_add_icon('6Oa-j7IqEi8');return false;" onmouseout="mouse_out_add_icon('6Oa-j7IqEi8');return false;" src="https://web.archive.org/web/20061208083125im_/https://www.youtube.com/img/icn_add_20x20.gif" alt="Add Video to QuickList"></a>
+                        </div>
+               </td>
+		<td><div class="title" onclick="_hbLink('RelatedVideo','ExploreMore');"><a href="https://web.archive.org/web/20061208083125/https://www.youtube.com/watch?v=6Oa-j7IqEi8&amp;mode=related&amp;search=" id="video_title_text_6_348_9">elephant at the zoo</a><br/>
+			<span class="runtime">00:09</span>
+			</div>
+			<div class="facets">
+				<span class="grayText">From:</span> <a href="https://web.archive.org/web/20061208083125/https://www.youtube.com/user/remmik" class="dg">remmik</a><br/>
+				<span class="grayText">Views:</span> 348
+			</div>
+			</div></td>
+		</tr></table>
+		</div> <!-- end vWatchEntry -->
+		<div class="vWatchEntry  ">
+                <table><tr>
+                <td>
+                        <div class="img" style="margin-top:0px;">
+                                <a href="https://web.archive.org/web/20061208083125/https://www.youtube.com/watch?v=lUqxtIGjUVw&amp;mode=related&amp;search=" onclick="_hbLink('RelatedVideo','ExploreMoreHidden');"><img class="vimgSm" id="side_img_7" src="https://web.archive.org/web/20061208083125im_/https://www.youtube.com/img/pixel.gif"/></a>
+                        </div>
+			<div id="add_img_lUqxtIGjUVw" class="addtoQLRelatedIE">
+				<a href="#" onclick="clicked_add_icon('lUqxtIGjUVw', 1);print_quicklist_video('https://web.archive.org/web/20061208083125/http://sjc-static16.sjc.youtube.com/vi/lUqxtIGjUVw/2.jpg',document.getElementById('video_title_text_7_519_25').innerHTML,'ShaneCS','lUqxtIGjUVw','00:25');_hbLink('QuickList+AddTo','Watch');return false;" title="Add Video to QuickList"><img id="add_button_lUqxtIGjUVw" border="0" onmouseover="mouse_over_add_icon('lUqxtIGjUVw');return false;" onmouseout="mouse_out_add_icon('lUqxtIGjUVw');return false;" src="https://web.archive.org/web/20061208083125im_/https://www.youtube.com/img/icn_add_20x20.gif" alt="Add Video to QuickList"></a>
+                        </div>
+               </td>
+		<td><div class="title" onclick="_hbLink('RelatedVideo','ExploreMore');"><a href="/web/20061208083125/https://www.youtube.com/watch?v=lUqxtIGjUVw&amp;mode=related&amp;search=" id="video_title_text_7_519_25">paignton zoo elephant</a><br/>
+			<span class="runtime">00:25</span>
+			</div>
+			<div class="facets">
+				<span class="grayText">From:</span> <a href="/web/20061208083125/https://www.youtube.com/user/ShaneCS" class="dg">ShaneCS</a><br/>
+				<span class="grayText">Views:</span> 519
+			</div>
+			</div></td>
+		</tr></table>
+		</div> <!-- end vWatchEntry -->
+		<div class="vWatchEntry  ">
+                <table><tr>
+                <td>
+                        <div class="img" style="margin-top:0px;">
+                                <a href="/web/20061208083125/https://www.youtube.com/watch?v=AUjGbceH-kA&amp;mode=related&amp;search=" onclick="_hbLink('RelatedVideo','ExploreMoreHidden');"><img class="vimgSm" id="side_img_8" src="/web/20061208083125im_/https://www.youtube.com/img/pixel.gif"/></a>
+                        </div>
+			<div id="add_img_AUjGbceH-kA" class="addtoQLRelatedIE">
+				<a href="#" onclick="clicked_add_icon('AUjGbceH-kA', 1);print_quicklist_video('https://web.archive.org/web/20061208083125/http://sjc-static12.sjc.youtube.com/vi/AUjGbceH-kA/2.jpg',document.getElementById('video_title_text_8_263_3').innerHTML,'allroy71','AUjGbceH-kA','00:03');_hbLink('QuickList+AddTo','Watch');return false;" title="Add Video to QuickList"><img id="add_button_AUjGbceH-kA" border="0" onmouseover="mouse_over_add_icon('AUjGbceH-kA');return false;" onmouseout="mouse_out_add_icon('AUjGbceH-kA');return false;" src="/web/20061208083125im_/https://www.youtube.com/img/icn_add_20x20.gif" alt="Add Video to QuickList"></a>
+                        </div>
+               </td>
+		<td><div class="title" onclick="_hbLink('RelatedVideo','ExploreMore');"><a href="/web/20061208083125/https://www.youtube.com/watch?v=AUjGbceH-kA&amp;mode=related&amp;search=" id="video_title_text_8_263_3">Elephants at Wild Animal Park</a><br/>
+			<span class="runtime">00:03</span>
+			</div>
+			<div class="facets">
+				<span class="grayText">From:</span> <a href="/web/20061208083125/https://www.youtube.com/user/allroy71" class="dg">allroy71</a><br/>
+				<span class="grayText">Views:</span> 263
+			</div>
+			</div></td>
+		</tr></table>
+		</div> <!-- end vWatchEntry -->
+		<div class="vWatchEntry  ">
+                <table><tr>
+                <td>
+                        <div class="img" style="margin-top:0px;">
+                                <a href="/web/20061208083125/https://www.youtube.com/watch?v=PwItiQ9TBF0&amp;mode=related&amp;search=" onclick="_hbLink('RelatedVideo','ExploreMoreHidden');"><img class="vimgSm" id="side_img_9" src="/web/20061208083125im_/https://www.youtube.com/img/pixel.gif"/></a>
+                        </div>
+			<div id="add_img_PwItiQ9TBF0" class="addtoQLRelatedIE">
+				<a href="#" onclick="clicked_add_icon('PwItiQ9TBF0', 1);print_quicklist_video('https://web.archive.org/web/20061208083125/http://sjl-static15.sjl.youtube.com/vi/PwItiQ9TBF0/2.jpg',document.getElementById('video_title_text_9_192_15').innerHTML,'chumtastic','PwItiQ9TBF0','00:15');_hbLink('QuickList+AddTo','Watch');return false;" title="Add Video to QuickList"><img id="add_button_PwItiQ9TBF0" border="0" onmouseover="mouse_over_add_icon('PwItiQ9TBF0');return false;" onmouseout="mouse_out_add_icon('PwItiQ9TBF0');return false;" src="/web/20061208083125im_/https://www.youtube.com/img/icn_add_20x20.gif" alt="Add Video to QuickList"></a>
+                        </div>
+               </td>
+		<td><div class="title" onclick="_hbLink('RelatedVideo','ExploreMore');"><a href="/web/20061208083125/https://www.youtube.com/watch?v=PwItiQ9TBF0&amp;mode=related&amp;search=" id="video_title_text_9_192_15">The Elephant</a><br/>
+			<span class="runtime">00:15</span>
+			</div>
+			<div class="facets">
+				<span class="grayText">From:</span> <a href="/web/20061208083125/https://www.youtube.com/user/chumtastic" class="dg">chumtastic</a><br/>
+				<span class="grayText">Views:</span> 192
+			</div>
+			</div></td>
+		</tr></table>
+		</div> <!-- end vWatchEntry -->
+		<div class="vWatchEntry  ">
+                <table><tr>
+                <td>
+                        <div class="img" style="margin-top:0px;">
+                                <a href="/web/20061208083125/https://www.youtube.com/watch?v=wvBtwELcVkQ&amp;mode=related&amp;search=" onclick="_hbLink('RelatedVideo','ExploreMoreHidden');"><img class="vimgSm" id="side_img_10" src="/web/20061208083125im_/https://www.youtube.com/img/pixel.gif"/></a>
+                        </div>
+			<div id="add_img_wvBtwELcVkQ" class="addtoQLRelatedIE">
+				<a href="#" onclick="clicked_add_icon('wvBtwELcVkQ', 1);print_quicklist_video('https://web.archive.org/web/20061208083125/http://sjl-static6.sjl.youtube.com/vi/wvBtwELcVkQ/2.jpg',document.getElementById('video_title_text_10_265_68').innerHTML,'coffeepotshock','wvBtwELcVkQ','01:08');_hbLink('QuickList+AddTo','Watch');return false;" title="Add Video to QuickList"><img id="add_button_wvBtwELcVkQ" border="0" onmouseover="mouse_over_add_icon('wvBtwELcVkQ');return false;" onmouseout="mouse_out_add_icon('wvBtwELcVkQ');return false;" src="/web/20061208083125im_/https://www.youtube.com/img/icn_add_20x20.gif" alt="Add Video to QuickList"></a>
+                        </div>
+               </td>
+		<td><div class="title" onclick="_hbLink('RelatedVideo','ExploreMore');"><a href="/web/20061208083125/https://www.youtube.com/watch?v=wvBtwELcVkQ&amp;mode=related&amp;search=" id="video_title_text_10_265_68">Elephant!</a><br/>
+			<span class="runtime">01:08</span>
+			</div>
+			<div class="facets">
+				<span class="grayText">From:</span> <a href="/web/20061208083125/https://www.youtube.com/user/coffeepotshock" class="dg">coffeepotshock</a><br/>
+				<span class="grayText">Views:</span> 265
+			</div>
+			</div></td>
+		</tr></table>
+		</div> <!-- end vWatchEntry -->
+		<div class="vWatchEntry  ">
+                <table><tr>
+                <td>
+                        <div class="img" style="margin-top:0px;">
+                                <a href="/web/20061208083125/https://www.youtube.com/watch?v=genQ8RPFrhY&amp;mode=related&amp;search=" onclick="_hbLink('RelatedVideo','ExploreMoreHidden');"><img class="vimgSm" id="side_img_11" src="/web/20061208083125im_/https://www.youtube.com/img/pixel.gif"/></a>
+                        </div>
+			<div id="add_img_genQ8RPFrhY" class="addtoQLRelatedIE">
+				<a href="#" onclick="clicked_add_icon('genQ8RPFrhY', 1);print_quicklist_video('https://web.archive.org/web/20061208083125/http://sjl-static16.sjl.youtube.com/vi/genQ8RPFrhY/2.jpg',document.getElementById('video_title_text_11_258_18').innerHTML,'skyfly','genQ8RPFrhY','00:18');_hbLink('QuickList+AddTo','Watch');return false;" title="Add Video to QuickList"><img id="add_button_genQ8RPFrhY" border="0" onmouseover="mouse_over_add_icon('genQ8RPFrhY');return false;" onmouseout="mouse_out_add_icon('genQ8RPFrhY');return false;" src="/web/20061208083125im_/https://www.youtube.com/img/icn_add_20x20.gif" alt="Add Video to QuickList"></a>
+                        </div>
+               </td>
+		<td><div class="title" onclick="_hbLink('RelatedVideo','ExploreMore');"><a href="/web/20061208083125/https://www.youtube.com/watch?v=genQ8RPFrhY&amp;mode=related&amp;search=" id="video_title_text_11_258_18">elephant dance</a><br/>
+			<span class="runtime">00:18</span>
+			</div>
+			<div class="facets">
+				<span class="grayText">From:</span> <a href="/web/20061208083125/https://www.youtube.com/user/skyfly" class="dg">skyfly</a><br/>
+				<span class="grayText">Views:</span> 258
+			</div>
+			</div></td>
+		</tr></table>
+		</div> <!-- end vWatchEntry -->
+		<div class="vWatchEntry  ">
+                <table><tr>
+                <td>
+                        <div class="img" style="margin-top:0px;">
+                                <a href="/web/20061208083125/https://www.youtube.com/watch?v=eGj2_TJX7ME&amp;mode=related&amp;search=" onclick="_hbLink('RelatedVideo','ExploreMoreHidden');"><img class="vimgSm" id="side_img_12" src="/web/20061208083125im_/https://www.youtube.com/img/pixel.gif"/></a>
+                        </div>
+			<div id="add_img_eGj2_TJX7ME" class="addtoQLRelatedIE">
+				<a href="#" onclick="clicked_add_icon('eGj2_TJX7ME', 1);print_quicklist_video('https://web.archive.org/web/20061208083125/http://sjl-static6.sjl.youtube.com/vi/eGj2_TJX7ME/2.jpg',document.getElementById('video_title_text_12_80_18').innerHTML,'MusashiKojiroh','eGj2_TJX7ME','00:18');_hbLink('QuickList+AddTo','Watch');return false;" title="Add Video to QuickList"><img id="add_button_eGj2_TJX7ME" border="0" onmouseover="mouse_over_add_icon('eGj2_TJX7ME');return false;" onmouseout="mouse_out_add_icon('eGj2_TJX7ME');return false;" src="/web/20061208083125im_/https://www.youtube.com/img/icn_add_20x20.gif" alt="Add Video to QuickList"></a>
+                        </div>
+               </td>
+		<td><div class="title" onclick="_hbLink('RelatedVideo','ExploreMore');"><a href="/web/20061208083125/https://www.youtube.com/watch?v=eGj2_TJX7ME&amp;mode=related&amp;search=" id="video_title_text_12_80_18">elephant</a><br/>
+			<span class="runtime">00:18</span>
+			</div>
+			<div class="facets">
+				<span class="grayText">From:</span> <a href="/web/20061208083125/https://www.youtube.com/user/MusashiKojiroh" class="dg">MusashiKojiroh</a><br/>
+				<span class="grayText">Views:</span> 80
+			</div>
+			</div></td>
+		</tr></table>
+		</div> <!-- end vWatchEntry -->
+		<div class="vWatchEntry  ">
+                <table><tr>
+                <td>
+                        <div class="img" style="margin-top:0px;">
+                                <a href="/web/20061208083125/https://www.youtube.com/watch?v=BtMNE1rccHk&amp;mode=related&amp;search=" onclick="_hbLink('RelatedVideo','ExploreMoreHidden');"><img class="vimgSm" id="side_img_13" src="/web/20061208083125im_/https://www.youtube.com/img/pixel.gif"/></a>
+                        </div>
+			<div id="add_img_BtMNE1rccHk" class="addtoQLRelatedIE">
+				<a href="#" onclick="clicked_add_icon('BtMNE1rccHk', 1);print_quicklist_video('https://web.archive.org/web/20061208083125/http://sjc-static9.sjc.youtube.com/vi/BtMNE1rccHk/2.jpg',document.getElementById('video_title_text_13_125_13').innerHTML,'myscionxa','BtMNE1rccHk','00:13');_hbLink('QuickList+AddTo','Watch');return false;" title="Add Video to QuickList"><img id="add_button_BtMNE1rccHk" border="0" onmouseover="mouse_over_add_icon('BtMNE1rccHk');return false;" onmouseout="mouse_out_add_icon('BtMNE1rccHk');return false;" src="/web/20061208083125im_/https://www.youtube.com/img/icn_add_20x20.gif" alt="Add Video to QuickList"></a>
+                        </div>
+               </td>
+		<td><div class="title" onclick="_hbLink('RelatedVideo','ExploreMore');"><a href="/web/20061208083125/https://www.youtube.com/watch?v=BtMNE1rccHk&amp;mode=related&amp;search=" id="video_title_text_13_125_13">Camera Shy Elephant</a><br/>
+			<span class="runtime">00:13</span>
+			</div>
+			<div class="facets">
+				<span class="grayText">From:</span> <a href="/web/20061208083125/https://www.youtube.com/user/myscionxa" class="dg">myscionxa</a><br/>
+				<span class="grayText">Views:</span> 125
+			</div>
+			</div></td>
+		</tr></table>
+		</div> <!-- end vWatchEntry -->
+		<div class="vWatchEntry  ">
+                <table><tr>
+                <td>
+                        <div class="img" style="margin-top:0px;">
+                                <a href="/web/20061208083125/https://www.youtube.com/watch?v=ZtEpOb_E5kM&amp;mode=related&amp;search=" onclick="_hbLink('RelatedVideo','ExploreMoreHidden');"><img class="vimgSm" id="side_img_14" src="/web/20061208083125im_/https://www.youtube.com/img/pixel.gif"/></a>
+                        </div>
+			<div id="add_img_ZtEpOb_E5kM" class="addtoQLRelatedIE">
+				<a href="#" onclick="clicked_add_icon('ZtEpOb_E5kM', 1);print_quicklist_video('https://web.archive.org/web/20061208083125/http://sjc-static4.sjc.youtube.com/vi/ZtEpOb_E5kM/2.jpg',document.getElementById('video_title_text_14_106_114').innerHTML,'Wouter16','ZtEpOb_E5kM','01:54');_hbLink('QuickList+AddTo','Watch');return false;" title="Add Video to QuickList"><img id="add_button_ZtEpOb_E5kM" border="0" onmouseover="mouse_over_add_icon('ZtEpOb_E5kM');return false;" onmouseout="mouse_out_add_icon('ZtEpOb_E5kM');return false;" src="/web/20061208083125im_/https://www.youtube.com/img/icn_add_20x20.gif" alt="Add Video to QuickList"></a>
+                        </div>
+               </td>
+		<td><div class="title" onclick="_hbLink('RelatedVideo','ExploreMore');"><a href="/web/20061208083125/https://www.youtube.com/watch?v=ZtEpOb_E5kM&amp;mode=related&amp;search=" id="video_title_text_14_106_114">elephants</a><br/>
+			<span class="runtime">01:54</span>
+			</div>
+			<div class="facets">
+				<span class="grayText">From:</span> <a href="/web/20061208083125/https://www.youtube.com/user/Wouter16" class="dg">Wouter16</a><br/>
+				<span class="grayText">Views:</span> 106
+			</div>
+			</div></td>
+		</tr></table>
+		</div> <!-- end vWatchEntry -->
+		<div class="vWatchEntry  ">
+                <table><tr>
+                <td>
+                        <div class="img" style="margin-top:0px;">
+                                <a href="/web/20061208083125/https://www.youtube.com/watch?v=X5heOsRK2AA&amp;mode=related&amp;search=" onclick="_hbLink('RelatedVideo','ExploreMoreHidden');"><img class="vimgSm" id="side_img_15" src="/web/20061208083125im_/https://www.youtube.com/img/pixel.gif"/></a>
+                        </div>
+			<div id="add_img_X5heOsRK2AA" class="addtoQLRelatedIE">
+				<a href="#" onclick="clicked_add_icon('X5heOsRK2AA', 1);print_quicklist_video('https://web.archive.org/web/20061208083125/http://sjc-static17.sjc.youtube.com/vi/X5heOsRK2AA/2.jpg',document.getElementById('video_title_text_15_334_53').innerHTML,'Wouter16','X5heOsRK2AA','00:53');_hbLink('QuickList+AddTo','Watch');return false;" title="Add Video to QuickList"><img id="add_button_X5heOsRK2AA" border="0" onmouseover="mouse_over_add_icon('X5heOsRK2AA');return false;" onmouseout="mouse_out_add_icon('X5heOsRK2AA');return false;" src="/web/20061208083125im_/https://www.youtube.com/img/icn_add_20x20.gif" alt="Add Video to QuickList"></a>
+                        </div>
+               </td>
+		<td><div class="title" onclick="_hbLink('RelatedVideo','ExploreMore');"><a href="/web/20061208083125/https://www.youtube.com/watch?v=X5heOsRK2AA&amp;mode=related&amp;search=" id="video_title_text_15_334_53">huge elephant</a><br/>
+			<span class="runtime">00:53</span>
+			</div>
+			<div class="facets">
+				<span class="grayText">From:</span> <a href="/web/20061208083125/https://www.youtube.com/user/Wouter16" class="dg">Wouter16</a><br/>
+				<span class="grayText">Views:</span> 334
+			</div>
+			</div></td>
+		</tr></table>
+		</div> <!-- end vWatchEntry -->
+		<div class="vWatchEntry  ">
+                <table><tr>
+                <td>
+                        <div class="img" style="margin-top:0px;">
+                                <a href="/web/20061208083125/https://www.youtube.com/watch?v=dmirvl5hagI&amp;mode=related&amp;search=" onclick="_hbLink('RelatedVideo','ExploreMoreHidden');"><img class="vimgSm" id="side_img_16" src="/web/20061208083125im_/https://www.youtube.com/img/pixel.gif"/></a>
+                        </div>
+			<div id="add_img_dmirvl5hagI" class="addtoQLRelatedIE">
+				<a href="#" onclick="clicked_add_icon('dmirvl5hagI', 1);print_quicklist_video('https://web.archive.org/web/20061208083125/http://sjl-static3.sjl.youtube.com/vi/dmirvl5hagI/2.jpg',document.getElementById('video_title_text_16_2013_23').innerHTML,'Wouter16','dmirvl5hagI','00:23');_hbLink('QuickList+AddTo','Watch');return false;" title="Add Video to QuickList"><img id="add_button_dmirvl5hagI" border="0" onmouseover="mouse_over_add_icon('dmirvl5hagI');return false;" onmouseout="mouse_out_add_icon('dmirvl5hagI');return false;" src="/web/20061208083125im_/https://www.youtube.com/img/icn_add_20x20.gif" alt="Add Video to QuickList"></a>
+                        </div>
+               </td>
+		<td><div class="title" onclick="_hbLink('RelatedVideo','ExploreMore');"><a href="/web/20061208083125/https://www.youtube.com/watch?v=dmirvl5hagI&amp;mode=related&amp;search=" id="video_title_text_16_2013_23">baby elephant - very cute</a><br/>
+			<span class="runtime">00:23</span>
+			</div>
+			<div class="facets">
+				<span class="grayText">From:</span> <a href="/web/20061208083125/https://www.youtube.com/user/Wouter16" class="dg">Wouter16</a><br/>
+				<span class="grayText">Views:</span> 2013
+			</div>
+			</div></td>
+		</tr></table>
+		</div> <!-- end vWatchEntry -->
+		<div class="vWatchEntry  ">
+                <table><tr>
+                <td>
+                        <div class="img" style="margin-top:0px;">
+                                <a href="/web/20061208083125/https://www.youtube.com/watch?v=yY0ZUVegDlY&amp;mode=related&amp;search=" onclick="_hbLink('RelatedVideo','ExploreMoreHidden');"><img class="vimgSm" id="side_img_17" src="/web/20061208083125im_/https://www.youtube.com/img/pixel.gif"/></a>
+                        </div>
+			<div id="add_img_yY0ZUVegDlY" class="addtoQLRelatedIE">
+				<a href="#" onclick="clicked_add_icon('yY0ZUVegDlY', 1);print_quicklist_video('https://web.archive.org/web/20061208083125/http://sjl-static9.sjl.youtube.com/vi/yY0ZUVegDlY/2.jpg',document.getElementById('video_title_text_17_39_21').innerHTML,'Littlenutsy','yY0ZUVegDlY','00:21');_hbLink('QuickList+AddTo','Watch');return false;" title="Add Video to QuickList"><img id="add_button_yY0ZUVegDlY" border="0" onmouseover="mouse_over_add_icon('yY0ZUVegDlY');return false;" onmouseout="mouse_out_add_icon('yY0ZUVegDlY');return false;" src="/web/20061208083125im_/https://www.youtube.com/img/icn_add_20x20.gif" alt="Add Video to QuickList"></a>
+                        </div>
+               </td>
+		<td><div class="title" onclick="_hbLink('RelatedVideo','ExploreMore');"><a href="/web/20061208083125/https://www.youtube.com/watch?v=yY0ZUVegDlY&amp;mode=related&amp;search=" id="video_title_text_17_39_21">Olifanten</a><br/>
+			<span class="runtime">00:21</span>
+			</div>
+			<div class="facets">
+				<span class="grayText">From:</span> <a href="/web/20061208083125/https://www.youtube.com/user/Littlenutsy" class="dg">Littlenutsy</a><br/>
+				<span class="grayText">Views:</span> 39
+			</div>
+			</div></td>
+		</tr></table>
+		</div> <!-- end vWatchEntry -->
+		<div class="vWatchEntry  ">
+                <table><tr>
+                <td>
+                        <div class="img" style="margin-top:0px;">
+                                <a href="/web/20061208083125/https://www.youtube.com/watch?v=YN05lbIBxMw&amp;mode=related&amp;search=" onclick="_hbLink('RelatedVideo','ExploreMoreHidden');"><img class="vimgSm" id="side_img_18" src="/web/20061208083125im_/https://www.youtube.com/img/pixel.gif"/></a>
+                        </div>
+			<div id="add_img_YN05lbIBxMw" class="addtoQLRelatedIE">
+				<a href="#" onclick="clicked_add_icon('YN05lbIBxMw', 1);print_quicklist_video('https://web.archive.org/web/20061208083125/http://sjc-static7.sjc.youtube.com/vi/YN05lbIBxMw/2.jpg',document.getElementById('video_title_text_18_65_25').innerHTML,'mirchi23','YN05lbIBxMw','00:25');_hbLink('QuickList+AddTo','Watch');return false;" title="Add Video to QuickList"><img id="add_button_YN05lbIBxMw" border="0" onmouseover="mouse_over_add_icon('YN05lbIBxMw');return false;" onmouseout="mouse_out_add_icon('YN05lbIBxMw');return false;" src="/web/20061208083125im_/https://www.youtube.com/img/icn_add_20x20.gif" alt="Add Video to QuickList"></a>
+                        </div>
+               </td>
+		<td><div class="title" onclick="_hbLink('RelatedVideo','ExploreMore');"><a href="/web/20061208083125/https://www.youtube.com/watch?v=YN05lbIBxMw&amp;mode=related&amp;search=" id="video_title_text_18_65_25">Elephant Eats</a><br/>
+			<span class="runtime">00:25</span>
+			</div>
+			<div class="facets">
+				<span class="grayText">From:</span> <a href="/web/20061208083125/https://www.youtube.com/user/mirchi23" class="dg">mirchi23</a><br/>
+				<span class="grayText">Views:</span> 65
+			</div>
+			</div></td>
+		</tr></table>
+		</div> <!-- end vWatchEntry -->
+		<div class="vWatchEntry  ">
+                <table><tr>
+                <td>
+                        <div class="img" style="margin-top:0px;">
+                                <a href="/web/20061208083125/https://www.youtube.com/watch?v=efUVmXxR3pI&amp;mode=related&amp;search=" onclick="_hbLink('RelatedVideo','ExploreMoreHidden');"><img class="vimgSm" id="side_img_19" src="/web/20061208083125im_/https://www.youtube.com/img/pixel.gif"/></a>
+                        </div>
+			<div id="add_img_efUVmXxR3pI" class="addtoQLRelatedIE">
+				<a href="#" onclick="clicked_add_icon('efUVmXxR3pI', 1);print_quicklist_video('https://web.archive.org/web/20061208083125/http://sjl-static4.sjl.youtube.com/vi/efUVmXxR3pI/2.jpg',document.getElementById('video_title_text_19_55_24').innerHTML,'bwee77','efUVmXxR3pI','00:24');_hbLink('QuickList+AddTo','Watch');return false;" title="Add Video to QuickList"><img id="add_button_efUVmXxR3pI" border="0" onmouseover="mouse_over_add_icon('efUVmXxR3pI');return false;" onmouseout="mouse_out_add_icon('efUVmXxR3pI');return false;" src="/web/20061208083125im_/https://www.youtube.com/img/icn_add_20x20.gif" alt="Add Video to QuickList"></a>
+                        </div>
+               </td>
+		<td><div class="title" onclick="_hbLink('RelatedVideo','ExploreMore');"><a href="/web/20061208083125/https://www.youtube.com/watch?v=efUVmXxR3pI&amp;mode=related&amp;search=" id="video_title_text_19_55_24">Feeding the Elephants</a><br/>
+			<span class="runtime">00:24</span>
+			</div>
+			<div class="facets">
+				<span class="grayText">From:</span> <a href="/web/20061208083125/https://www.youtube.com/user/bwee77" class="dg">bwee77</a><br/>
+				<span class="grayText">Views:</span> 55
+			</div>
+			</div></td>
+		</tr></table>
+		</div> <!-- end vWatchEntry -->
+	
+	</div>
+
+			<table class="showingTable"><tr>
+	<td class="smallText">Showing 1-20 of 26961</td>
+	<td align="right" class="smallText"><a href="/web/20061208083125/https://www.youtube.com/results?search_type=related&amp;search_query=zoo%20jawed%20elephant%20youtube">See All Videos</a></td>
+	</tr></table>
+		</div> <!-- end exRelatedDiv -->
+		
+		
+		<div id="exPlaylistDiv" style="display: none;">
+			Loading...
+		</div> <!-- end exPlaylistDiv -->
+
+		<div id="exUserDiv" style="display: none;">
+			Loading...
+		</div> <!-- end exPlaylistDiv -->
+			
+	</div> <!-- end exploreBody -->
+	
+	
+	
+	</div> <!-- end exploreDiv -->
+
+	
+</div> <!-- end aboutExploreDiv -->
+
+<div class="spOffersDiv">
+	<h4 class="label">New on YouTube</h4>
+
+        <div class="spOffersEntry">
+        Do you know how not to?
+        <a href="/web/20061208083125/https://www.youtube.com/contest/hownotto">Enter for a chance to win</a>!
+        </div>
+        
+        <div class="spOffersEntry">
+        There&#146;s a new way play.
+        <a href="/web/20061208083125/https://www.youtube.com/profile?user=wii">Wii from Nintendo</a>.
+        </div>    
+        
+        <div class="spOffersEntry">
+        Real Drama all the time. 
+        <a href="/web/20061208083125/https://www.youtube.com/profile?user=TheBadGirlsClub">Check out the Bad Girls Club</a>.
+        </div>  
+ 
+         <div class="spOffersEntry">
+        The Dark Side of Fame. 
+        <a href="/web/20061208083125/https://www.youtube.com/profile?user=FXDirt">Dirt on FX</a>.
+        </div>         
+                    
+         <div class="spOffersEntry">
+        Show Us Your Undeniable Power.
+        <a href="/web/20061208083125/https://www.youtube.com/undeniabletv">Enter for a chance to win</a> a Panasonic Plasma TV.
+        </div>  
+
+</div>
+
+</td>
+
+
+
+<td>
+
+<div id="sideAdDiv">
+	<div id="dVidsDiv">
+	<div class="heading">Director Videos</div>
+		<div class="dvidEntry">
+			<div><a href="/web/20061208083125/https://www.youtube.com/cthru?gFuvuSxCzy_Rg8VmDh_hFB7dA7nv2JNAFh0C9hbDpixkd4pl9ZjCzveNQicxyDAHLgXPs7gtFVOgcLthuTuwjw2Go_afycBhQ2p8Lxk3NITu2uKUhGkoo5W6Y5gwUdqme2xuHfhiiS8bgKjhKB95_bgRMJOH42pHCdzlTKCKQcdiOSQ_szhCpeIi_X1L6J9J87Jk2NMj1Ss=" target="_parent" name="&amp;lid=DV+-+NoSwearing+-+boh3m3&amp;lpos=Watch-s0"><img src="https://web.archive.org/web/20061208083125im_/http://sjc-static2.sjc.youtube.com/vi/egat8JwGpos/2.jpg" class="vimgMd"></a></div>
+			<div class="title">
+			<b><a href="/web/20061208083125/https://www.youtube.com/cthru?gFuvuSxCzy_Rg8VmDh_hFB7dA7nv2JNAFh0C9hbDpixkd4pl9ZjCzveNQicxyDAHLgXPs7gtFVOgcLthuTuwjw2Go_afycBhQ2p8Lxk3NITu2uKUhGkoo5W6Y5gwUdqme2xuHfhiiS8bgKjhKB95_bgRMJOH42pHCdzlTKCKQcdiOSQ_szhCpeIi_X1L6J9J87Jk2NMj1Ss=" target="_parent" name="&amp;lid=DV+-+NoSwearing+-+boh3m3&amp;lpos=Watch-s0">No Swearing!</a></b><br>
+			<span class="runtime">12:09</span>
+			</div>
+			<div class="facets">
+			<span class="grayText">From:</span> <a href="/web/20061208083125/https://www.youtube.com/user/boh3m3" class="dg" name="&amp;lid=DirectorChannelLink&amp;lpos=Watch-s0">boh3m3</a>
+			</div>
+		</div>
+		<div class="dvidEntry">
+			<div><a href="/web/20061208083125/https://www.youtube.com/cthru?NxzrpX6AenlmYHx6GgzMCqVfVYvudVlpboD_bmDhhKFUI7sPj-UW7SHEnZVoJ1pe_bUvayzJN8flcVblJDXTsEn-PoIJQhEVGylp3HcaWMjm1pLxIgmQh-kIFV7lrG1htv2jQcGJyAzLdlPptOm5o_-bvUn6nKxMLrAoaO1HfPydVbc1zWoTeU9hqHDWcnxb27zT6c5IaWc=" target="_parent" name="&amp;lid=DV+-+Mydadsingingtango+-+Cgrinbaum&amp;lpos=Watch-s1"><img src="https://web.archive.org/web/20061208083125im_/http://sjc-static17.sjc.youtube.com/vi/tpXU6d5cOUM/2.jpg" class="vimgMd"></a></div>
+			<div class="title">
+			<b><a href="/web/20061208083125/https://www.youtube.com/cthru?NxzrpX6AenlmYHx6GgzMCqVfVYvudVlpboD_bmDhhKFUI7sPj-UW7SHEnZVoJ1pe_bUvayzJN8flcVblJDXTsEn-PoIJQhEVGylp3HcaWMjm1pLxIgmQh-kIFV7lrG1htv2jQcGJyAzLdlPptOm5o_-bvUn6nKxMLrAoaO1HfPydVbc1zWoTeU9hqHDWcnxb27zT6c5IaWc=" target="_parent" name="&amp;lid=DV+-+Mydadsingingtango+-+Cgrinbaum&amp;lpos=Watch-s1">My dad singing tango</a></b><br>
+			<span class="runtime">03:03</span>
+			</div>
+			<div class="facets">
+			<span class="grayText">From:</span> <a href="/web/20061208083125/https://www.youtube.com/user/Cgrinbaum" class="dg" name="&amp;lid=DirectorChannelLink&amp;lpos=Watch-s1">Cgrinbaum</a>
+			</div>
+		</div>
+		<div class="dvidEntry">
+			<div><a href="/web/20061208083125/https://www.youtube.com/cthru?QDXc27YyKinW2kjMhwukvC0YSHagoQVRy22TQuFJz5Nc0AnNPOUsE1QC4YoHe_dpZk0nJHcR5jG9ixX1ERhHrLVsxidptLtgZy_48ptWaBZ5IyYhLXkkYClG6igK_CZzkxQFjVOxsvYPHfWKiSKbiLCTpWlNCyyhucR1ULxc9iUQEods88TU19uezW1mBSaTOIQG-5rZPBM=" target="_parent" name="&amp;lid=DV+-+OLDSCHOOLTEASER+-+taylorrobinson&amp;lpos=Watch-s2"><img src="https://web.archive.org/web/20061208083125im_/http://sjl-static11.sjl.youtube.com/vi/pxkcZsSYzn0/2.jpg" class="vimgMd"></a></div>
+			<div class="title">
+			<b><a href="/web/20061208083125/https://www.youtube.com/cthru?QDXc27YyKinW2kjMhwukvC0YSHagoQVRy22TQuFJz5Nc0AnNPOUsE1QC4YoHe_dpZk0nJHcR5jG9ixX1ERhHrLVsxidptLtgZy_48ptWaBZ5IyYhLXkkYClG6igK_CZzkxQFjVOxsvYPHfWKiSKbiLCTpWlNCyyhucR1ULxc9iUQEods88TU19uezW1mBSaTOIQG-5rZPBM=" target="_parent" name="&amp;lid=DV+-+OLDSCHOOLTEASER+-+taylorrobinson&amp;lpos=Watch-s2">OLD SCHOOL TEASER</a></b><br>
+			<span class="runtime">01:21</span>
+			</div>
+			<div class="facets">
+			<span class="grayText">From:</span> <a href="/web/20061208083125/https://www.youtube.com/user/taylorrobinson" class="dg" name="&amp;lid=DirectorChannelLink&amp;lpos=Watch-s2">taylorrobinson</a>
+			</div>
+		</div>
+		<div class="dvidEntry">
+			<div><a href="/web/20061208083125/https://www.youtube.com/cthru?zNTAMgilFJyxpl5y13fXckEYsLXvQp42gPDjzILkaMNbrzmFN-o1jq1S8dw37b5hR3O3hcyyPOjQsmGsxUhOaBi8v_Dggwqql9Hyn_x2zgGFUfSUFbF1l_6gkWw7RRvlE5z2CCsbevXnv8EHpix6YnaDSow5Hq-6lhA4LyVEhCI1J6y_F79zxbMIk-Iy_DrcKc3BsqMi3w4=" target="_parent" name="&amp;lid=DV+-+TheCrapMachineThe4BillAndMore+-+CBS&amp;lpos=Watch-s3"><img src="https://web.archive.org/web/20061208083125im_/http://sjc-static6.sjc.youtube.com/vi/v0vG9nwJ14Q/2.jpg" class="vimgMd"></a></div>
+			<div class="title">
+			<b><a href="/web/20061208083125/https://www.youtube.com/cthru?zNTAMgilFJyxpl5y13fXckEYsLXvQp42gPDjzILkaMNbrzmFN-o1jq1S8dw37b5hR3O3hcyyPOjQsmGsxUhOaBi8v_Dggwqql9Hyn_x2zgGFUfSUFbF1l_6gkWw7RRvlE5z2CCsbevXnv8EHpix6YnaDSow5Hq-6lhA4LyVEhCI1J6y_F79zxbMIk-Iy_DrcKc3BsqMi3w4=" target="_parent" name="&amp;lid=DV+-+TheCrapMachineThe4BillAndMore+-+CBS&amp;lpos=Watch-s3">The Crap Machine, The $4 Bill And More</a></b><br>
+			<span class="runtime">02:00</span>
+			</div>
+			<div class="facets">
+			<span class="grayText">From:</span> <a href="/web/20061208083125/https://www.youtube.com/user/CBS" class="dg" name="&amp;lid=DirectorChannelLink&amp;lpos=Watch-s3">CBS</a>
+			</div>
+		</div>
+	</div> <!-- end dVidsDiv -->
+</div> <!-- end sideAdDiv -->
+
+</td>
+
+
+</tr></table>
+
+<!-- Quicklist hide if cookie is no -->
+<script language="javascript" type="text/javascript">
+showQuickList();
+</script>
+
+		<div class="spacer">&nbsp;</div>
+	<div id="footerDiv">
+		<div id="footerContent">
+		<div id="footerSearch">
+			<form name="searchFormFooter" id="searchFormFooter" method="get" action="/web/20061208083125/https://www.youtube.com/results">
+			<input type="text" name="search_query" maxlength="128" class="searchField" value="">
+			&nbsp;
+			<input type="submit" name="search" value="Search">
+			</form>
+		</div> <!-- end footerSearch -->
+
+	
+		<div id="footerLinks">
+			
+			<table border="0" cellpadding="0" cellspacing="0" width="100%" align="center"><tr valign="top">
+			
+			<td>
+			<div class="footColumnLeft">
+				<div class="footLabel">Your&nbsp;&nbsp;Account</div>
+				<div class="footValues">
+					<div class="column">
+					<a href="/web/20061208083125/https://www.youtube.com/my_videos">Videos</a><br/>
+					<a href="/web/20061208083125/https://www.youtube.com/my_favorites">Favorites</a><br/>
+					</div>
+					<div class="column">
+					<a href="/web/20061208083125/https://www.youtube.com/my_playlists">Playlists</a><br/>
+					<a href="/web/20061208083125/https://www.youtube.com/my_messages">Inbox</a><br/>
+					</div>
+					<div class="column">
+					<a href="/web/20061208083125/https://www.youtube.com/subscription_center">Subscriptions</a><br/>
+					<a href="/web/20061208083125/https://www.youtube.com/my_account">more...</a><br/>
+					</div>
+				</div>
+			</div>
+			</td>
+			
+			<td>
+			<div class="footColumnMid">
+				<div class="footLabel">Help &amp; Info</div>
+				<div class="footValues">
+					<div class="column">
+					<a href="/web/20061208083125/https://www.youtube.com/t/help_center">Help Center</a><br/>
+					<a href="/web/20061208083125/https://www.youtube.com/t/video_toolbox">Video Toolbox</a><br/>
+					</div>
+					<div class="column">
+					<a href="/web/20061208083125/https://www.youtube.com/dev">Developer APIs</a><br/>
+					<a href="/web/20061208083125/https://www.youtube.com/t/safety">Safety Tips</a><br/>
+					</div>
+					<div class="column">
+					<a href="/web/20061208083125/https://www.youtube.com/t/dmca_policy">Copyright FAQ</a><br/>
+					<a href="/web/20061208083125/https://www.youtube.com/t/community_guidelines">Code of Conduct</a><br/>
+					</div>
+				</div>
+			</div>
+			</td>
+			
+			
+			<td>
+			<div class="footColumnRight">
+				<div class="footLabel">YouTube</div>
+				<div class="footValues">
+					<div class="column">
+					<a href="/web/20061208083125/https://www.youtube.com/t/about">Company Info</a><br/>
+					<a href="/web/20061208083125/https://www.youtube.com/testtube">Test Tube</a><br/>
+					</div>
+					<div class="column">
+					<a href="/web/20061208083125/https://www.youtube.com/t/terms">Terms of Use</a><br/>
+					<a href="/web/20061208083125/https://www.youtube.com/t/privacy">Privacy Policy</a><br/>
+					</div>
+					<div class="column">
+					<a href="/web/20061208083125/https://www.youtube.com/advertise">Advertising</a><br/>
+					<a href="/web/20061208083125/https://www.youtube.com/contact">Contact</a><br/>
+					</div>
+					<div class="column">
+					<a href="/web/20061208083125/https://www.youtube.com/press_room">Press</a><br/>
+					<a href="https://web.archive.org/web/20061208083125/http://www.pcrecruiter.net/pcrbin/regmenu.exe?uid=youtube.youtube">Jobs</a><br/>
+					</div>
+				</div>
+			</div>
+			</td>
+			
+			</tr></table>
+			
+		</div> <!-- end footerLinks -->
+		</div> <!-- end footerContent -->
+
+
+		<div id="footerCopyright">
+			Copyright &copy; 2006 YouTube, Inc.
+		</div> <!-- end footerCopyright -->
+		
+	</div> <!-- end footerDiv -->
+
+</div> <!-- end baseDiv -->
+</body>
+
+</html><!--
+     FILE ARCHIVED ON 08:31:25 Dec 08, 2006 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 06:12:35 Mar 14, 2022.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->
+<!--
+playback timings (ms):
+  captures_list: 769.766
+  exclusion.robots: 384.518
+  exclusion.robots.policy: 384.507
+  xauthn.identify: 305.396
+  xauthn.chkprivs: 78.854
+  RedisCDXSource: 5.293
+  esindex: 28.451
+  LoadShardBlock: 160.734 (3)
+  PetaboxLoader3.datanode: 155.161 (4)
+  CDXLines.iter: 42.954 (3)
+  load_resource: 63.665
+  PetaboxLoader3.resolve: 37.167
+-->
